@@ -207,15 +207,17 @@ html {
 @media (max-width: 768px) {
     header {
         flex-direction: row;
-        justify-content: space-between; /* 改为space-between以左右对齐 */
+        justify-content: center; /* 居中对齐整个头部内容 */
         align-items: center;
         padding: 10px 20px;
         height: auto;
+        position: relative; /* 为绝对定位的菜单按钮提供参考 */
     }
 
     .site-title {
         display: flex;
         align-items: center;
+        justify-content: center; /* 确保内容居中 */
         text-align: center;
     }
 
@@ -233,13 +235,21 @@ html {
     .menu-toggle {
         display: block;
         font-size: 1.2em; /* 调整后的大小 */
-        margin-left: 10px; /* 紧贴在标题右侧 */
+        position: absolute;
+        right: 50px; /* 放置在头部右侧 */
+        top: 50%;
+        transform: translateY(-50%) rotate(0deg); /* 垂直居中并初始化旋转角度 */
+        transition: transform 0.3s ease; /* 添加旋转过渡效果 */
+    }
+
+    .menu-toggle.active {
+        transform: translateY(-50%) rotate(180deg); /* 旋转180度 */
     }
 
     nav {
-        max-height: 0; /* 初始高度为0 */
+        max-height: 0; /* 初始高度为0，隐藏菜单 */
         overflow: hidden;
-        transition: max-height 0.3s ease-out; /* 添加过渡效果 */
+        transition: max-height 0.3s ease-out; /* 添加展开过渡效果 */
         width: 100%;
     }
 
@@ -247,7 +257,7 @@ html {
         max-height: 500px; /* 根据内容调整最大高度 */
         background-color: rgba(50, 50, 50, 0.9);
         position: absolute;
-        top: 60px;
+        top: 40px; /* 头部高度 */
         left: 0;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
