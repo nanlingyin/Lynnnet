@@ -44,7 +44,7 @@
                 <h3>开发工具（均为官网链接）</h3>
                 <ul>
                     <li><a href="https://www.jetbrains.com/pycharm/download/">Pycharm</a></li>
-                    <li><a href="https://code.visualstudio.com/">VSCdoe</a></li>
+                    <li><a href="https://code.visualstudio.com/">VSCode</a></li>
                     <li><a href="https://sourceforge.net/projects/dev-cpp/">DevC++</a></li>
                     <li><a href="https://www.cursor.com/">Cursor</a></li>
                     <li><a href="https://visualstudio.microsoft.com/zh-hans/vs/">VS</a></li>
@@ -109,9 +109,10 @@
     <script>
         const menuToggle = document.getElementById('menu-toggle');
         const navMenu = document.getElementById('nav-menu');
-
+    
         menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active'); /* 新增此行 */
         });
     </script>
 </body>

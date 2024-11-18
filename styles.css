@@ -188,7 +188,7 @@ html {
     text-decoration: underline;
 }
 
-/* 新增菜单按钮样式 */
+/* 新增菜单按钮旋转样式 */
 .menu-toggle {
     display: none;
     background: none;
@@ -196,13 +196,18 @@ html {
     color: #fff;
     font-size: 1.5em; /* 默认大小 */
     cursor: pointer;
+    transition: transform 0.3s ease; /* 添加过渡效果 */
+}
+
+.menu-toggle.active {
+    transform: rotate(180deg); /* 旋转180度 */
 }
 
 /* 响应式设计调整 */
 @media (max-width: 768px) {
     header {
         flex-direction: row;
-        justify-content: center; /* 改为居中对齐 */
+        justify-content: space-between; /* 改为space-between以左右对齐 */
         align-items: center;
         padding: 10px 20px;
         height: auto;
@@ -211,7 +216,6 @@ html {
     .site-title {
         display: flex;
         align-items: center;
-        /* 移除 flex: 1; 以防止占据全部空间 */
         text-align: center;
     }
 
@@ -233,17 +237,18 @@ html {
     }
 
     nav {
-        display: none;
+        max-height: 0; /* 初始高度为0 */
+        overflow: hidden;
+        transition: max-height 0.3s ease-out; /* 添加过渡效果 */
         width: 100%;
     }
 
     nav.active {
-        display: block;
+        max-height: 500px; /* 根据内容调整最大高度 */
         background-color: rgba(50, 50, 50, 0.9);
         position: absolute;
         top: 60px;
         left: 0;
-        width: 100%;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
@@ -261,7 +266,7 @@ html {
         width: 90%;
         height: auto;
         max-width: 300px; /* 根据需要调整最大宽度 */
-        aspect-ratio: 2 / 3;
+        aspect-ratio: 2 / 3; /* 修改为3:2比例 */
     }
 
     /* 调整捐赠页面其他样式 */
