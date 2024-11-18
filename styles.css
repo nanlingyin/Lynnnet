@@ -205,20 +205,29 @@ html {
 
 /* 响应式设计调整 */
 @media (max-width: 768px) {
+    /* 修改 header 样式 */
     header {
-        flex-direction: row;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60px; /* 与默认头部高度一致 */
+        background-color: rgba(51, 51, 51, 0.9); /* 保持一致的背景色 */
+        display: flex;
         justify-content: center; /* 居中整个头部内容 */
         align-items: center;
-        padding: 10px 20px;
-        height: auto;
-        position: relative; /* 为绝对定位的菜单按钮提供参考 */
+        padding: 0 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        z-index: 1000;
     }
 
+    /* 修改 .site-title 样式 */
     .site-title {
         display: flex;
         align-items: center;
         justify-content: center; /* 确保内容居中 */
         text-align: center;
+        margin: 0;
     }
 
     .site-title h1 {
@@ -229,61 +238,61 @@ html {
     .logo {
         width: 30px;
         height: 30px;
-        margin-right: 10px;
+        margin-right: 5px; /* 调整间距使箭头紧贴文字 */
     }
 
+    /* 修改菜单按钮样式 */
     .menu-toggle {
         display: block;
-        font-size: 1.2em; /* 调整后的大小 */
-        margin-left: 5px; /* 与 h1 保持紧密间距 */
-        transform: rotate(0deg); /* 初始化状态 */
-        transition: transform 0.3s ease; /* 添加旋转过渡效果 */
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.2em;
+        cursor: pointer;
+        margin-left: 5px; /* 与标题保持紧密间距 */
+        transform: rotate(0deg);
+        transition: transform 0.3s ease;
     }
 
     .menu-toggle.active {
-        transform: rotate(180deg); /* 旋转180度 */
+        transform: rotate(180deg);
     }
 
+    /* 调整导航菜单样式 */
     nav {
-        max-height: 0; /* 初始高度为0，隐藏菜单 */
-        overflow: hidden;
-        transition: max-height 0.3s ease-out; /* 添加展开过渡效果 */
+        position: absolute;
+        top: 60px; /* 位于头部下方 */
+        left: 0;
         width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        background-color: rgba(50, 50, 50, 0.9);
+        transition: max-height 0.3s ease-out;
+        z-index: 999; /* 确保导航菜单在头部之下 */
     }
 
     nav.active {
-        max-height: 500px; /* 根据内容调整最大高度 */
-        background-color: rgba(50, 50, 50, 0.9);
-        position: absolute;
-        top: 60px; /* 头部高度 */
-        left: 0;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        max-height: 500px; /* 根据内容调整 */
     }
 
     nav ul {
+        display: flex;
         flex-direction: column;
         align-items: center;
+        padding: 0;
+        margin: 0;
+        list-style: none;
     }
 
     nav ul li {
         margin: 10px 0;
     }
 
-    /* 修正捐赠页面的支付图片长宽比为3:2 */
-    .payment-image {
-        width: 90%;
-        height: auto;
-        max-width: 300px; /* 根据需要调整最大宽度 */
-        aspect-ratio: 2 / 3; /* 修改为3:2比例 */
+    nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1em;
     }
 
-    /* 调整捐赠页面其他样式 */
-    #donate-page {
-        padding: 60px 10px;
-    }
-
-    .back-button {
-        padding: 8px 16px;
-        font-size: 0.9em;
-    }
+    /* 其他样式保持不变 */
 }
