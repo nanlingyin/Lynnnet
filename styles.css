@@ -207,7 +207,7 @@ html {
 @media (max-width: 768px) {
     header {
         flex-direction: row;
-        justify-content: center; /* 居中对齐整个头部内容 */
+        justify-content: center; /* 居中整个头部内容 */
         align-items: center;
         padding: 10px 20px;
         height: auto;
@@ -236,7 +236,7 @@ html {
         display: block;
         font-size: 1.2em; /* 调整后的大小 */
         position: absolute;
-        right: 50px; /* 放置在头部右侧 */
+        right: 20px; /* 放置在头部右侧 */
         top: 50%;
         transform: translateY(-50%) rotate(0deg); /* 垂直居中并初始化旋转角度 */
         transition: transform 0.3s ease; /* 添加旋转过渡效果 */
@@ -257,7 +257,7 @@ html {
         max-height: 500px; /* 根据内容调整最大高度 */
         background-color: rgba(50, 50, 50, 0.9);
         position: absolute;
-        top: 40px; /* 头部高度 */
+        top: 60px; /* 头部高度 */
         left: 0;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
