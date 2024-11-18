@@ -1,6 +1,8 @@
 
 /* styles.css */
 
+/* 现有样式保持不变 */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -186,4 +188,67 @@ html {
 
 .resource-category ul li a:hover {
     text-decoration: underline;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 20px;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header nav ul li {
+        margin: 10px 0;
+    }
+
+    main {
+        padding: 100px 10px 20px 10px;
+    }
+
+    .site-title h1 {
+        font-size: 1.2em;
+    }
+
+    .logo {
+        width: 30px;
+        height: 30px;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .payment-image,
+    .profile-image {
+        width: 200px;
+        height: 200px;
+    }
+
+    .back-button {
+        padding: 8px 16px;
+        font-size: 0.9em;
+    }
+
+    /* 调整导航链接 */
+    header nav ul li a {
+        font-size: 1em;
+    }
+
+    /* 调整段落字体大小 */
+    section p {
+        font-size: 1em;
+    }
+
+    /* 调整资源列表 */
+    .resource-category h3 {
+        font-size: 1.2em;
+    }
+
+    .resource-category ul li {
+        font-size: 0.9em;
+    }
 }
