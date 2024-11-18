@@ -202,9 +202,10 @@ html {
 /* 响应式设计调整 */
 @media (max-width: 768px) {
     header {
-        flex-direction: column;
-        height: auto;
+        flex-direction: row;
+        justify-content: space-between;
         padding: 10px 20px;
+        height: auto;
     }
 
     header nav ul {
@@ -227,7 +228,6 @@ html {
     .logo {
         width: 30px;
         height: 30px;
-        margin-right: 0;
         margin-bottom: 10px;
     }
 
@@ -276,7 +276,7 @@ html {
     /* 展示导航菜单时的样式 */
     nav.active {
         display: block;
-        background-color: rgba(51, 51, 51, 0.9);
+        background-color: rgba(50, 50, 50, 0.9);
         position: absolute;
         top: 60px;
         left: 0;
@@ -309,6 +309,6 @@ html {
         width: 90%;
         height: auto;
         max-width: 300px; /* 根据需要调整最大宽度 */
-        aspect-ratio: 3 / 2;
+        aspect-ratio: 2 / 3;
     }
 }
