@@ -235,7 +235,7 @@ html {
     .menu-toggle {
         display: block;
         font-size: 1.2em; /* 调整后的大小 */
-        margin-left: 10px; /* 与 h1 保持间距 */
+        margin-left: 5px; /* 与 h1 保持紧密间距 */
         transform: rotate(0deg); /* 初始化状态 */
         transition: transform 0.3s ease; /* 添加旋转过渡效果 */
     }
