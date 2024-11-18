@@ -202,7 +202,7 @@ html {
 @media (max-width: 768px) {
     header {
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center; /* 改为居中对齐 */
         align-items: center;
         padding: 10px 20px;
         height: auto;
@@ -211,8 +211,7 @@ html {
     .site-title {
         display: flex;
         align-items: center;
-        justify-content: center;
-        flex: 1;
+        /* 移除 flex: 1; 以防止占据全部空间 */
         text-align: center;
     }
 
@@ -230,6 +229,7 @@ html {
     .menu-toggle {
         display: block;
         font-size: 1.2em; /* 调整后的大小 */
+        margin-left: 10px; /* 紧贴在标题右侧 */
     }
 
     nav {
