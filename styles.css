@@ -1,0 +1,189 @@
+
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('images/background.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3); /* 半透明白色覆盖 */
+    backdrop-filter: blur(0px); /* 背景模糊 */
+    z-index: -1; /* 确保遮罩层在背景图片之上，内容之下 */
+}
+
+.site-title {
+    display: flex;
+    align-items: center;
+}
+
+/* Logo 图像样式 */
+.logo {
+    width: 40px; /* 调整为所需大小 */
+    height: 40px; /* 确保高度等于宽度以保持1:1比例 */
+    object-fit: cover; /* 确保图像覆盖且裁剪为1:1 */
+    margin-right: 10px; /* 图像与标题之间的间距 */
+    border-radius: 5px; /* 可选：为图像添加圆角 */
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* 头部高度 */
+    background-color: rgba(51, 51, 51, 0.9); /* 半透明灰色 */
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    margin-right: 15px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #ddd;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+main {
+    padding: 80px 20px 20px 20px; /* 顶部内边距增加以避免被固定头部遮挡 */
+    max-width: 1200px;
+    margin: auto;
+}
+
+section {
+    margin-bottom: 40px;
+    background: rgba(255, 255, 255, 0.7); /* 半透明背景 */
+    backdrop-filter: blur(1px); /* 磨砂玻璃效果 */
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    display: block;
+    margin: 20px auto 40px auto;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover; /* 确保图像覆盖且裁剪为1:1 */
+}
+
+footer {
+    background-color: rgba(51, 51, 51, 0.8);
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    margin-top: 40px;
+    border-radius: 10px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.payment-image {
+    display: block;
+    margin: 20px auto;
+    width: 300px;
+    height: 450px;
+}
+
+#donate-page {
+    text-align: center;
+    padding: 60px 20px;
+    max-width: 800px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.6); /* 半透明背景 */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#donate-page p {
+    font-size: 1.2em;
+    margin-top: 15px;
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #555;
+}
+
+.resource-category {
+    margin-bottom: 30px;
+}
+
+.resource-category h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.resource-category ul {
+    list-style: disc inside;
+    padding-left: 20px;
+}
+
+.resource-category ul li {
+    margin-bottom: 5px;
+}
+
+.resource-category ul li a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.resource-category ul li a:hover {
+    text-decoration: underline;
+}
