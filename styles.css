@@ -252,3 +252,47 @@ html {
         font-size: 0.9em;
     }
 }
+
+/* 新增菜单按钮样式 */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+/* 响应式设计调整 */
+@media (max-width: 768px) {
+    /* 隐藏导航菜单 */
+    nav {
+        display: none;
+        width: 100%;
+    }
+
+    /* 显示菜单按钮 */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* 展示导航菜单时的样式 */
+    nav.active {
+        display: block;
+        background-color: rgba(51, 51, 51, 0.9);
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+}
