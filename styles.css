@@ -235,15 +235,13 @@ html {
     .menu-toggle {
         display: block;
         font-size: 1.2em; /* 调整后的大小 */
-        position: absolute;
-        right: 20px; /* 放置在头部右侧 */
-        top: 50%;
-        transform: translateY(-50%) rotate(0deg); /* 垂直居中并初始化旋转角度 */
+        margin-left: 10px; /* 与 h1 保持间距 */
+        transform: rotate(0deg); /* 初始化状态 */
         transition: transform 0.3s ease; /* 添加旋转过渡效果 */
     }
 
     .menu-toggle.active {
-        transform: translateY(-50%) rotate(180deg); /* 旋转180度 */
+        transform: rotate(180deg); /* 旋转180度 */
     }
 
     nav {
