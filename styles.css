@@ -22,20 +22,6 @@ body::before {
     z-index: -1; /* 确保遮罩层在背景图片之上，内容之下 */
 }
 
-.site-title {
-    display: flex;
-    align-items: center;
-}
-
-/* Logo 图像样式 */
-.logo {
-    width: 40px; /* 调整为所需大小 */
-    height: 40px; /* 确保高度等于宽度以保持1:1比例 */
-    object-fit: cover; /* 确保图像覆盖且裁剪为1:1 */
-    margin-right: 10px; /* 图像与标题之间的间距 */
-    border-radius: 5px; /* 可选：为图像添加圆角 */
-}
-
 header {
     position: fixed;
     top: 0;
@@ -50,6 +36,24 @@ header {
     padding: 0 20px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     z-index: 1000;
+}
+
+.site-title {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 40px; /* 调整为所需大小 */
+    height: 40px; /* 确保高度等于宽度以保持1:1比例 */
+    object-fit: cover; /* 确保图像覆盖且裁剪为1:1 */
+    margin-right: 10px; /* 图像与标题之间的间距 */
+    border-radius: 5px; /* 可选：为图像添加圆角 */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
 }
 
 header nav ul {
@@ -74,11 +78,6 @@ header nav ul li a:hover {
     color: #ddd;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 1.5em;
-}
-
 main {
     padding: 80px 20px 20px 20px; /* 顶部内边距增加以避免被固定头部遮挡 */
     max-width: 1200px;
@@ -91,7 +90,7 @@ section {
     backdrop-filter: blur(1px); /* 磨砂玻璃效果 */
     border-radius: 10px;
     padding: 20px;
-    text-align: center
+    text-align: center;
 }
 
 section h2 {
@@ -204,76 +203,40 @@ html {
     header {
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
         padding: 10px 20px;
         height: auto;
     }
 
-    header nav ul {
-        flex-direction: column;
+    .site-title {
+        display: flex;
         align-items: center;
-    }
-
-    header nav ul li {
-        margin: 10px 0;
-    }
-
-    main {
-        padding: 100px 10px 20px 10px;
+        justify-content: center;
+        flex: 1;
+        text-align: center;
     }
 
     .site-title h1 {
         font-size: 1.2em;
+        margin: 0;
     }
 
     .logo {
         width: 30px;
         height: 30px;
-        margin-bottom: 10px;
+        margin-right: 10px;
     }
 
-    .payment-image,
-    .profile-image {
-        width: 200px;
-        height: 200px;
-    }
-
-    .back-button {
-        padding: 8px 16px;
-        font-size: 0.9em;
-    }
-
-    /* 调整导航链接 */
-    header nav ul li a {
-        font-size: 1em;
-    }
-
-    /* 调整段落字体大小 */
-    section p {
-        font-size: 1em;
-    }
-
-    /* 调整资源列表 */
-    .resource-category h3 {
-        font-size: 1.2em;
-    }
-
-    .resource-category ul li {
-        font-size: 0.9em;
-    }
-
-    /* 隐藏导航菜单 */
-    nav {
-        display: none;
-        width: 100%;
-    }
-
-    /* 显示菜单按钮 */
     .menu-toggle {
         display: block;
         font-size: 1.2em; /* 调整后的大小 */
     }
 
-    /* 展示导航菜单时的样式 */
+    nav {
+        display: none;
+        width: 100%;
+    }
+
     nav.active {
         display: block;
         background-color: rgba(50, 50, 50, 0.9);
@@ -293,22 +256,21 @@ html {
         margin: 10px 0;
     }
 
-    /* 居中logo和标题 */
-    .site-title {
-        justify-content: center;
-        text-align: center;
-        flex-direction: column;
-    }
-
-    .site-title h1 {
-        margin-top: 10px;
-    }
-
-    /* 调整捐赠页面的支付图片长宽比为3:2 */
+    /* 修正捐赠页面的支付图片长宽比为3:2 */
     .payment-image {
         width: 90%;
         height: auto;
         max-width: 300px; /* 根据需要调整最大宽度 */
         aspect-ratio: 2 / 3;
+    }
+
+    /* 调整捐赠页面其他样式 */
+    #donate-page {
+        padding: 60px 10px;
+    }
+
+    .back-button {
+        padding: 8px 16px;
+        font-size: 0.9em;
     }
 }
