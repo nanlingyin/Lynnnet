@@ -104,7 +104,11 @@ footer a:hover {
 .resource-category .card a:hover::before {
     transform: rotate(45deg);
 }
-
+.highlighted-contributor {
+    border: 10px solid #FFD700; /* 金色边框 */
+    border-radius: 10px; /* 可选：圆角边框 */
+    box-shadow: 0 0 10px rgba(255, 215, 0, 1); /* 可选：金色阴影 */
+}
 /* 添加 Font Awesome 图标库 */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
 
