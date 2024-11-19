@@ -8,11 +8,17 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- 粒子背景容器 -->
+    <div id="particles-js"></div>
+
+    <!-- 头部 -->
     <header>
         <div class="site-title">
             <img src="images/logo.jpeg" alt="Logo" class="logo">
             <h1>捐赠</h1>
-            <button class="menu-toggle" id="menu-toggle">▲</button>
+            <button class="menu-toggle" id="menu-toggle" aria-label="切换菜单">
+                <span class="hamburger"></span>
+            </button>
         </div>
         <nav id="nav-menu">
             <ul>
@@ -22,22 +28,28 @@
                 <li><a href="index.html#tutorials">教程</a></li>
                 <li><a href="index.html#donate">捐赠</a></li>
                 <li><a href="index.html#connect">联系方式</a></li>
-                <li><a href="index.html#con">   </a></li>
             </ul>
         </nav>
     </header>
+
+    <!-- 主内容 -->
     <main>
         <section id="donate-page">
+            <h2>捐赠</h2>
             <img src="images/pay.jpg" alt="收款码" class="payment-image">
-            <p>Ciallo～(∠・ω< )⌒★感谢捐赠，请在备注留下您的联系方式以后有福利回馈哦！</p>
+            <p>Ciallo～(∠・ω< )⌒★ 感谢捐赠，请在备注留下您的联系方式，稍后将有福利回馈哦！</p>
             <button class="back-button" onclick="window.history.back()">返回上一页</button>
         </section>
     </main>
+
+    <!-- 页脚 -->
     <footer>
         <p>&copy; 2024 LynngNAN的个人站</p>
         <p>本站完全开源： <a href="https://github.com/nanlingyin/Lynnnet">https://github.com/nanlingyin/Lynnnet</a></p>
-        <p><a href="#" id="contributors-link">点此查看贡献者</a></p> <!-- 新增链接 -->
+        <p><a href="#" id="contributors-link">点此查看贡献者</a></p>
     </footer>
+
+    <!-- 贡献者模态窗口 -->
     <div id="contributors-modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -53,59 +65,30 @@
                 <img src="contributors/7.jpg" alt="贡献者7">
                 <!-- 添加更多图片根据需要 -->
             </div>
-            <p>感谢上述捐赠者\贡献者为lynnnet提供的帮助</p>
+            <p>感谢上述捐赠者/贡献者为lynnnet提供的帮助</p>
         </div>
     </div>
-    <script>
-        // 现有的菜单切换功能
-        const menuToggle = document.getElementById('menu-toggle');
-        const navMenu = document.getElementById('nav-menu');
 
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            menuToggle.classList.toggle('active'); /* 切换active类以触发旋转 */
-        });
+    <!-- 悬浮按钮 -->
+    <div id="floating-button">
+        <div id="float-button-circle">+</div>
+    </div>
 
-        // 贡献者模态窗口功能
-        const contributorsLink = document.getElementById('contributors-link');
-        const contributorsModal = document.getElementById('contributors-modal');
-        const closeModal = document.querySelector('.modal .close');
+    <!-- 悬浮菜单 -->
+    <div id="floating-menu">
+        <ul>
+            <li><a href="#about">个人介绍</a></li>
+            <li><a href="#resources">常用资源</a></li>
+            <li><a href="#projects">个人作品</a></li>
+            <li><a href="#tutorials">教程</a></li>
+            <li><a href="#donate">捐赠</a></li>
+            <li><a href="#connect">联系方式</a></li>
+            <li><button id="toggle-particles-effect">切换粒子效果</button></li>
+        </ul>
+    </div>
 
-        // 打开模态窗口
-        contributorsLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            contributorsModal.style.display = 'block';
-        });
-
-        // 关闭模态窗口
-        closeModal.addEventListener('click', () => {
-            contributorsModal.style.display = 'none';
-        });
-
-        // 点击模态窗口外部关闭窗口
-        window.addEventListener('click', (event) => {
-            if (event.target == contributorsModal) {
-                contributorsModal.style.display = 'none';
-            }
-        });
-
-        // 动态调整导航链接（可选）
-        document.addEventListener('DOMContentLoaded', () => {
-            const navLinks = document.querySelectorAll('#nav-menu ul li a');
-            const currentPage = window.location.pathname.split('/').pop(); // 获取当前页面文件名
-
-            navLinks.forEach(link => {
-                const href = link.getAttribute('href');
-                if (href.startsWith('#')) {
-                    // 如果是内部锚点链接
-                    if (currentPage !== 'index.html' && currentPage !== '') {
-                        // 如果当前页面不是主页
-                        link.setAttribute('href', `index.html${href}`);
-                    }
-                    // 如果是主页，则保持不变
-                }
-            });
-        });
-    </script>
+    <!-- JavaScript -->
+    <script src="particles.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
