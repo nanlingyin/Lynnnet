@@ -1,6 +1,9 @@
 /* styles.css */
 
 /* CSS 变量 */
+/* styles.css */
+
+/* CSS 变量 */
 :root {
     --primary-color: #1E3A8A; /* 深蓝色 */
     --secondary-color: #ffffff; /* 次要颜色 */
@@ -16,6 +19,10 @@
     --transition-speed: 0.3s;
     --body-link-color: #1E90FF; /* 正文链接颜色，如道奇蓝 */
     --body-link-hover-color: #104E8B; /* 正文链接悬停颜色，如深道奇蓝 */
+    --card-bg-color: #ffffff; /* 卡片背景色 */
+    --card-hover-bg-color: #f0f8ff; /* 卡片悬停背景色 */
+    --card-shadow: rgba(0, 0, 0, 0.1);
+    --icon-color: #1E90FF; /* 图标颜色 */
 }
 
 /* 全局样式 */
@@ -36,6 +43,81 @@ body a {
     text-decoration: none;
     transition: color var(--transition-speed);
 }
+
+body a:hover {
+    color: var(--body-link-hover-color);
+}
+
+footer a {
+    color: var(--link-color);
+}
+
+footer a:hover {
+    color: var(--link-hover-color);
+}
+
+/* 优化链接样式 */
+.resource-category .card {
+    background-color: var(--card-bg-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--card-shadow);
+    padding: 20px;
+    margin: 20px 0;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed), background-color var(--transition-speed);
+}
+
+.resource-category .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px var(--card-shadow);
+    background-color: var(--card-hover-bg-color);
+}
+
+/* 卡片内链接样式 */
+.resource-category .card a {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    margin: 10px 0;
+    background-color: transparent;
+    border-radius: 5px;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+    color: var(--body-link-color);
+}
+
+.resource-category .card a:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    transform: scale(1.02);
+    box-shadow: 0 2px 4px var(--card-shadow);
+}
+
+/* 添加图标样式 */
+.resource-category .card a::before {
+    content: '\f0c1'; /* Font Awesome 链接图标 */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 10px;
+    color: var(--icon-color);
+    transition: transform var(--transition-speed);
+}
+
+.resource-category .card a:hover::before {
+    transform: rotate(45deg);
+}
+
+/* 添加 Font Awesome 图标库 */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+/* 卡片布局调整 */
+.resource-category .card {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 其他现有样式保持不变 */
+/* ... (保留您现有的 styles.css 内容) ... */
+
+/* 确保新添加的样式在现有样式之后 */
 
 body a:hover {
     color: var(--body-link-hover-color);
