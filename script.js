@@ -154,4 +154,4 @@ window.addEventListener('resize', () => {
         resetFloatingPosition();
         floatingMenu.style.display = 'none'; // 隐藏悬浮菜单
     }
-});
+})
