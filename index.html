@@ -41,7 +41,8 @@
         <section id="resources">
             <h2>常用资源链接</h2>
             <div class="resource-category">
-                <h3>开发工具（均为官网链接）</h3>
+                <h3>开发工具</h3>
+                <h3>（均为官网链接）</h3>
                 <ul>
                     <li><a href="https://www.jetbrains.com/pycharm/download/">Pycharm</a></li>
                     <li><a href="https://code.visualstudio.com/">VSCode</a></li>
@@ -71,7 +72,8 @@
                 </ul>
             </div>
             <div class="resource-category">
-                <h3>神奇网站（一些功能不错的网站）</h3>
+                <h3>神奇网站</h3>
+                <h3>（一些功能不错的网站）</h3>
                 <ul>
                     <li><a href="https://ccfddl.top/">会议期刊截稿时间查询网站</a></li>
                     <li><a href="https://app.txyz.ai/">tzyzAI论文解读</a></li>
@@ -164,6 +166,24 @@
             if (event.target == contributorsModal) {
                 contributorsModal.style.display = 'none';
             }
+        });
+    
+        // 动态调整导航链接
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('#nav-menu ul li a');
+            const currentPage = window.location.pathname.split('/').pop(); // 获取当前页面文件名
+    
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href.startsWith('#')) {
+                    // 如果是内部锚点链接
+                    if (currentPage !== 'index.html' && currentPage !== '') {
+                        // 如果当前页面不是主页
+                        link.setAttribute('href', `index.html${href}`);
+                    }
+                    // 如果是主页，则保持不变
+                }
+            });
         });
     </script>
 </body>

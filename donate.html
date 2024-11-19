@@ -16,13 +16,13 @@
         </div>
         <nav id="nav-menu">
             <ul>
-                <li><a href="#about">个人介绍</a></li>
-                <li><a href="#resources">常用资源</a></li>
-                <li><a href="#projects">个人作品</a></li>
-                <li><a href="#tutorials">教程</a></li>
-                <li><a href="#donate">捐赠</a></li>
-                <li><a href="#connect">联系方式</a></li>
-                <li><a href="#con">   </a></li>
+                <li><a href="index.html#about">个人介绍</a></li>
+                <li><a href="index.html#resources">常用资源</a></li>
+                <li><a href="index.html#projects">个人作品</a></li>
+                <li><a href="index.html#tutorials">教程</a></li>
+                <li><a href="index.html#donate">捐赠</a></li>
+                <li><a href="index.html#connect">联系方式</a></li>
+                <li><a href="index.html#con">   </a></li>
             </ul>
         </nav>
     </header>
@@ -60,33 +60,51 @@
         // 现有的菜单切换功能
         const menuToggle = document.getElementById('menu-toggle');
         const navMenu = document.getElementById('nav-menu');
-    
+
         menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
             menuToggle.classList.toggle('active'); /* 切换active类以触发旋转 */
         });
-    
+
         // 贡献者模态窗口功能
         const contributorsLink = document.getElementById('contributors-link');
         const contributorsModal = document.getElementById('contributors-modal');
         const closeModal = document.querySelector('.modal .close');
-    
+
         // 打开模态窗口
         contributorsLink.addEventListener('click', (e) => {
             e.preventDefault();
             contributorsModal.style.display = 'block';
         });
-    
+
         // 关闭模态窗口
         closeModal.addEventListener('click', () => {
             contributorsModal.style.display = 'none';
         });
-    
+
         // 点击模态窗口外部关闭窗口
         window.addEventListener('click', (event) => {
             if (event.target == contributorsModal) {
                 contributorsModal.style.display = 'none';
             }
+        });
+
+        // 动态调整导航链接（可选）
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('#nav-menu ul li a');
+            const currentPage = window.location.pathname.split('/').pop(); // 获取当前页面文件名
+
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href.startsWith('#')) {
+                    // 如果是内部锚点链接
+                    if (currentPage !== 'index.html' && currentPage !== '') {
+                        // 如果当前页面不是主页
+                        link.setAttribute('href', `index.html${href}`);
+                    }
+                    // 如果是主页，则保持不变
+                }
+            });
         });
     </script>
 </body>
