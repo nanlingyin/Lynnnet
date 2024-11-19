@@ -53,48 +53,54 @@ document.addEventListener('DOMContentLoaded', () => {
 // 悬浮按钮功能
 const floatingButton = document.getElementById('floating-button');
 const floatingMenu = document.getElementById('floating-menu');
+let isDraggingFloating = false;
 
-floatingButton.addEventListener('click', () => {
-    floatingMenu.style.display = (floatingMenu.style.display === 'block') ? 'none' : 'block';
-});
-
-// 拖动悬浮按钮
-let isDragging = false;
-let offsetX, offsetY;
-
-floatingButton.addEventListener('mousedown', (e) => {
-    // 防止拖动时触发点击事件
-    if (e.target === floatingButton) {
-        isDragging = true;
-        offsetX = e.clientX - floatingButton.offsetLeft;
-        offsetY = e.clientY - floatingButton.offsetTop;
-        document.body.style.userSelect = 'none';
+// 悬浮按钮点击事件
+floatingButton.addEventListener('click', (e) => {
+    if (!isDraggingFloating) { // 仅在非拖动时触发
+        if (floatingMenu.style.display === 'block') {
+            floatingMenu.style.display = 'none';
+        } else {
+            floatingMenu.style.display = 'block';
+            positionFloatingMenu();
+        }
     }
 });
 
-document.addEventListener('mousemove', (e) => {
-    if (isDragging) {
-        let newX = e.clientX - offsetX;
-        let newY = e.clientY - offsetY;
-
-        // 限制菜单在视口内移动
-        const maxX = window.innerWidth - floatingButton.offsetWidth;
-        const maxY = window.innerHeight - floatingButton.offsetHeight;
-
-        if (newX < 0) newX = 0;
-        if (newX > maxX) newX = maxX;
-        if (newY < 0) newY = 0;
-        if (newY > maxY) newY = maxY;
-
-        floatingButton.style.left = `${newX}px`;
-        floatingButton.style.top = `${newY}px`;
-        floatingButton.style.transform = 'none';
-    }
+// 监听页面加载完成后确保悬浮按钮和菜单的位置
+document.addEventListener('DOMContentLoaded', () => {
+    resetFloatingPosition();
 });
 
-document.addEventListener('mouseup', () => {
-    isDragging = false;
-    document.body.style.userSelect = 'auto';
+// 监听滚动事件，确保悬浮按钮和菜单在页面底部也能正常工作
+window.addEventListener('scroll', () => {
+    // 可根据需要添加相关逻辑
+    // 例如：确保悬浮按钮不被底部内容遮挡
+});
+
+// 位置调整函数优化
+function positionFloatingMenu() {
+    // 不再动态计算位置，保持固定位置
+}
+
+// 重置悬浮按钮和菜单位置到右下角
+function resetFloatingPosition() {
+    floatingButton.style.left = '';
+    floatingButton.style.top = '';
+    floatingButton.style.right = '20px';
+    floatingButton.style.bottom = '20px';
+    floatingMenu.style.left = '';
+    floatingMenu.style.top = '';
+    floatingMenu.style.bottom = '80px';
+    floatingMenu.style.right = '20px';
+    floatingMenu.style.display = 'none'; // 初始化时隐藏悬浮菜单
+}
+
+// 其他优化：增加点击区域扩大用户体验
+document.addEventListener('click', (event) => {
+    if (!floatingButton.contains(event.target) && !floatingMenu.contains(event.target)) {
+        floatingMenu.style.display = 'none';
+    }
 });
 
 // 切换粒子效果
@@ -113,5 +119,39 @@ toggleParticlesBtn.addEventListener('click', () => {
             window.pJSDom[0].pJS.fn.vendors.destroypJS();
             window.pJSDom = [];
         }
+    }
+});
+
+// 切换鼠标拖尾效果
+const toggleMouseTrailBtn = document.getElementById('toggle-mouse-trail');
+let mouseTrailEnabled = false;
+const mouseTrailContainer = document.getElementById('mouse-trail');
+
+toggleMouseTrailBtn.addEventListener('click', () => {
+    mouseTrailEnabled = !mouseTrailEnabled;
+    if (mouseTrailEnabled) {
+        document.addEventListener('mousemove', createMouseTrail);
+    } else {
+        document.removeEventListener('mousemove', createMouseTrail);
+        mouseTrailContainer.innerHTML = ''; // 清空拖尾效果
+    }
+});
+
+function createMouseTrail(e) {
+    const trail = document.createElement('div');
+    trail.className = 'cursor-effect';
+    trail.style.left = `${e.clientX}px`;
+    trail.style.top = `${e.clientY}px`;
+    mouseTrailContainer.appendChild(trail);
+}
+
+// 监听页面尺寸变化，适配移动端和桌面端
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+        // 桌面端时，保持当前位置
+    } else {
+        // 移动端时，重置到右下角
+        resetFloatingPosition();
+        floatingMenu.style.display = 'none'; // 隐藏悬浮菜单
     }
 });

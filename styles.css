@@ -2,18 +2,20 @@
 
 /* CSS 变量 */
 :root {
-    --primary-color: #4CAF50; /* 主要颜色 */
+    --primary-color: #1E3A8A; /* 深蓝色 */
     --secondary-color: #ffffff; /* 次要颜色 */
     --background-color: rgba(255, 255, 255, 0.8); /* 内容背景色 */
-    --header-bg-color: rgba(51, 51, 51, 0.9);
-    --footer-bg-color: rgba(51, 51, 51, 0.8);
-    --button-bg-color: #4CAF50;
-    --button-hover-bg-color: #45a049;
+    --header-bg-color: rgba(30, 58, 138, 0.9); /* 深蓝色头部背景 */
+    --footer-bg-color: rgba(30, 58, 138, 0.8); /* 深蓝色页脚背景 */
+    --button-bg-color: #1E3A8A;
+    --button-hover-bg-color: #1C3D91;
     --modal-bg-color: rgba(0, 0, 0, 0.5);
     --text-color: #333333;
-    --link-color: #4CAF50;
-    --link-hover-color: #388E3C;
+    --link-color: #FFD700; /* 与页脚背景色不同的链接颜色，如金色 */
+    --link-hover-color: #FFA500; /* 悬停时颜色 */
     --transition-speed: 0.3s;
+    --body-link-color: #1E90FF; /* 正文链接颜色，如道奇蓝 */
+    --body-link-hover-color: #104E8B; /* 正文链接悬停颜色，如深道奇蓝 */
 }
 
 /* 全局样式 */
@@ -24,7 +26,49 @@ body {
     padding: 0;
     background-color: #f5f5f5;
     color: var(--text-color);
+    overflow-x: hidden;
     z-index: 0;
+}
+
+/* 链接样式 */
+body a {
+    color: var(--body-link-color);
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+
+body a:hover {
+    color: var(--body-link-hover-color);
+}
+
+footer a {
+    color: var(--link-color);
+}
+
+footer a:hover {
+    color: var(--link-hover-color);
+}
+
+/* 粒子背景容器 */
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2; /* 确保在背景图片后面 */
+    pointer-events: none;
+}
+
+/* 鼠标拖尾效果容器 */
+#mouse-trail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10000; /* 确保在最上层 */
 }
 
 /* 背景图片容器 */
@@ -40,7 +84,7 @@ body::after {
     background-repeat: no-repeat;
     background-position: center center;
     transition: opacity 0.5s ease-in-out;
-    z-index: -2;
+    z-index: -3;
 }
 
 body::before {
@@ -51,7 +95,7 @@ body::before {
 body::after {
     background-image: url('images/background-mobile.jpg');
     opacity: 0;
-    z-index: -1;
+    z-index: -2;
 }
 
 @media (max-width: 768px) {
@@ -61,11 +105,6 @@ body::after {
     body::after {
         opacity: 1;
     }
-}
-
-body::before,
-body::after {
-    pointer-events: none;
 }
 
 /* Header */
@@ -232,13 +271,13 @@ html {
 }
 
 .resource-category ul li a {
-    color: var(--link-color);
+    color: var(--body-link-color);
     text-decoration: none;
     transition: color var(--transition-speed);
 }
 
 .resource-category ul li a:hover {
-    color: var(--link-hover-color);
+    color: var(--body-link-hover-color);
     text-decoration: underline;
 }
 
@@ -262,8 +301,13 @@ html {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-index: 1500;
+    z-index: 1600;
     cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#floating-button:active {
+    transform: scale(0.95);
 }
 
 #float-button-circle {
@@ -273,16 +317,11 @@ html {
     border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     position: relative;
-}
-
-#float-button-circle::after {
-    content: "+";
-    color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 2em;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    color: var(--secondary-color);
 }
 
 /* 悬浮菜单样式 */
@@ -293,9 +332,13 @@ html {
     background-color: var(--header-bg-color);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    z-index: 1500;
+    z-index: 1600; /* 提高z-index，确保在悬浮球之上 */
     padding: 10px;
     display: none; /* 默认隐藏 */
+    width: 200px; /* 固定宽度，保持一致 */
+    max-height: none; /* 固定高度，防止大小不一 */
+    overflow: visible; /* 超出高度时启用滚动 */
+    animation: fadeIn 0.3s;
 }
 
 #floating-menu ul {
@@ -386,6 +429,13 @@ html {
 
     nav ul li a {
         font-size: 1.2em;
+    }
+
+    /* 调整悬浮菜单位置以适配移动端 */
+    #floating-button,
+    #floating-menu {
+        bottom: 80px;
+        right: 20px;
     }
 }
 
@@ -484,6 +534,10 @@ html {
 @keyframes fadeOut {
     from { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
     to { opacity: 0; transform: translate(-50%, -50%) scale(2); }
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* 背景切换类 */
