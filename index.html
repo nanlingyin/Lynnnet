@@ -105,14 +105,54 @@
     <footer>
         <p>&copy; 2024 LynngNAN的个人站</p>
         <p>本站完全开源： <a href="https://github.com/nanlingyin/Lynnnet">https://github.com/nanlingyin/Lynnnet</a></p>
+        <p><a href="#" id="contributors-link">点此查看贡献者</a></p> <!-- 新增链接 -->
     </footer>
+    <div id="contributors-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>贡献者</h2>
+            <div class="contributors-images">
+                <!-- 替换为您的贡献者图片 -->
+                <img src="contributors/1.jpg" alt="贡献者1">
+                <img src="contributors/2.jpg" alt="贡献者2">
+                <img src="contributors/3.jpg" alt="贡献者3">
+                <img src="contributors/4.png" alt="贡献者3">
+                <!-- 添加更多图片根据需要 -->
+            </div>
+            <p>感谢上述捐赠者\贡献者为lynnnet提供的帮助</p>
+        </div>
+    </div>
     <script>
+        // 现有的菜单切换功能
         const menuToggle = document.getElementById('menu-toggle');
         const navMenu = document.getElementById('nav-menu');
     
         menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
             menuToggle.classList.toggle('active'); /* 切换active类以触发旋转 */
+        });
+    
+        // 贡献者模态窗口功能
+        const contributorsLink = document.getElementById('contributors-link');
+        const contributorsModal = document.getElementById('contributors-modal');
+        const closeModal = document.querySelector('.modal .close');
+    
+        // 打开模态窗口
+        contributorsLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            contributorsModal.style.display = 'block';
+        });
+    
+        // 关闭模态窗口
+        closeModal.addEventListener('click', () => {
+            contributorsModal.style.display = 'none';
+        });
+    
+        // 点击模态窗口外部关闭窗口
+        window.addEventListener('click', (event) => {
+            if (event.target == contributorsModal) {
+                contributorsModal.style.display = 'none';
+            }
         });
     </script>
 </body>
