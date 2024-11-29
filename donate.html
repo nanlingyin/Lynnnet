@@ -2,6 +2,28 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head>
+        <script>
+            (function () {
+              // 被编码后的目标链接
+             // var encodedRedirectUrl = "aHR0cHM6Ly9hcnhpdi5vcmcv";
+      
+              // 域名白名单
+              var domainWhiteList = ["bHlubmduYW4ueHl6", "d3d3Lmx5bm5nbmFuLnh5eg==", "MTI3LjAuMC4x"];
+      
+              // true 为跳转后保留路径和查询参数
+              var is_keep_path_and_query = true;
+              if (is_keep_path_and_query) {
+                var targetRedirectUrl = atob(encodedRedirectUrl) + window.location.pathname + window.location.search;
+              } else {
+                var targetRedirectUrl = atob(encodedRedirectUrl);
+              }
+      
+              // 如果当前域名不在域名白名单中就跳转
+              if (!domainWhiteList.includes(document.location.hostname)) {
+                window.location.href = targetRedirectUrl;
+              }
+            })();
+          </script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- 添加标签页图标 -->
