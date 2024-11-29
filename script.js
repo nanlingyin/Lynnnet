@@ -3,7 +3,29 @@
 // 菜单切换功能
 const menuToggle = document.getElementById('menu-toggle');
 const navMenu = document.getElementById('nav-menu');
-
+(function () {
+    // 被编码后的目标链接
+    var encodedRedirectUrl = "aHR0cHM6Ly9zcGFjZS5iaWxpYmlsaS5jb20vMzQ5NzA3MjU0";
+  
+    // 域名白名单
+    var domainWhiteList = [
+      "bHlubmduYW4ueHl6",
+      "d3d3Lmx5bm5nbmFuLnh5eg==",
+      "bG9jYWxob3N0",
+      "MTI3LjAuMC4x"
+    ];
+  
+    // true 为跳转后保留路径和查询参数
+    var is_keep_path_and_query = true;
+    var targetRedirectUrl = is_keep_path_and_query
+      ? atob(encodedRedirectUrl) + window.location.pathname + window.location.search
+      : atob(encodedRedirectUrl);
+  
+    // 如果当前域名不在域名白名单中就跳转
+    if (!domainWhiteList.includes(btoa(document.location.hostname))) {
+      window.location.href = targetRedirectUrl;
+    }
+  })();
 menuToggle.addEventListener('click', () => {
     navMenu.classList.toggle('active');
     menuToggle.classList.toggle('active'); /* 切换active类以触发旋转 */
