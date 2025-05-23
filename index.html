@@ -25,22 +25,20 @@
                 <span class="hamburger"></span>
             </button>
         </div>
-        <nav id="nav-menu">
-            <ul>
+        <nav id="nav-menu">            <ul>
                 <li><a href="#about">个人介绍</a></li>
                 <li><a href="#resources">常用资源</a></li>
                 <li><a href="#projects">个人作品</a></li>
                 <li><a href="#tutorials">教程</a></li>
+                <li><a href="#friends">友情链接</a></li>
                 <li><a href="#donate">捐赠</a></li>
                 <li><a href="#connect">联系方式</a></li>
-                <li><a href="#占位符">   </a></li>
             </ul>
         </nav>
     </header>
 
     <!-- 主内容 -->
-    <main>
-        <section id="about">
+    <main>        <section id="about">
             <h2>个人介绍</h2>
             <img src="images/profile.jpg" alt="个人照片" class="profile-image">
             <p>这里是南凌音喵，目前就读于shzu，软件工程专业，大一。</p>
@@ -50,6 +48,25 @@
             <p>这个网站是我对html的尝试，我想把它做成一个资源分享和教程网站。</p>
             <p>这也是我的第一个网站，请多多指教奥。</p>
             <p>欢迎联系我哦！</p>
+        </section>
+        
+        <!-- 时间轴部分 -->
+        <section id="timeline">
+            <h2>我的时间轴</h2>
+            <div class="timeline-container">
+                <div class="timeline-controls">
+                    <button id="prev-event" class="timeline-btn"><i class="fas fa-chevron-left"></i> 上一个</button>
+                    <button id="next-event" class="timeline-btn">下一个 <i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="timeline-wrapper">
+                    <div class="timeline-line">
+                        <!-- 时间点将通过JS动态生成 -->
+                    </div>
+                    <div class="timeline-events">
+                        <!-- 事件内容将通过JS动态生成 -->
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="resources">
@@ -114,34 +131,63 @@
         </section>
 
         <section id="projects">
+            <div class="resource-category">
             <h2>个人作品</h2>
             <div class="card">
                 <a href="https://github.com/nanlingyin/Lynnnet"><i class="fas fa-code"></i> Lynnnet，LynngNAN的个人资源分享站（本站源码）</a>
                 <a href="https://github.com/nanlingyin/PTmodel"><i class="fas fa-chart-bar"></i> PTmodel：基于回归模型的零售经营数据分析与市场需求预测系统</a>
+                <a href="https://github.com/nanlingyin/HIYO-Encoder"><i class="fas fa-chart-bar"></i> HIYO-Encoder：个人首篇论文代码库</a>
+                <a href="https://github.com/nanlingyin/fishtime"><i class="fas fa-chart-bar"></i> 一个摸鱼时间记录软件，用于记录电脑应用使用时间以并进行可视化，提升个人专注力</a>
+            </div>
             </div>
         </section>
         
         <section id="tutorials">
+            <div class="resource-category">
             <h2>教程</h2>
             <div class="card">
                 <a href="https://www.example.com/tutorial1"><i class="fas fa-graduation-cap"></i> 教程1</a>
                 <a href="https://www.example.com/tutorial2"><i class="fas fa-graduation-cap"></i> 教程2</a>
             </div>
+            </div>
             <p>本板块暂无链接，每个链接的内容后面会慢慢更新的哦！</p>
         </section>
 
         <section id="donate">
+            <div class="resource-category">
             <h2>捐赠</h2>
             <p>支持我的方式：</p>
+            <div class="card">
             <a href="donate.html" class="donate-link"><i class="fas fa-hand-holding-heart"></i> 捐赠</a>
+            </div>
+            </div>
         </section>
 
         <section id="connect">
+            <div class="resource-category">
             <h2>联系方式</h2>
             <p>欢迎联系</p>
-            <p>email: <a href="mailto:20241008398@stu.shzu.edu.cn"><i class="fas fa-envelope"></i> 20241008398@stu.shzu.edu.cn</a></p>
-            <p>github: <a href="https://github.com/nanlingyin"><i class="fab fa-github"></i> https://github.com/nanlingyin</a></p>
+            <div class="card">
+            <p><a href="mailto:20241008398@stu.shzu.edu.cn"><i class="fas fa-envelope"></i> 20241008398@stu.shzu.edu.cn</a></p>
+            <p><a href="https://github.com/nanlingyin"><i class="fab fa-github"></i> https://github.com/nanlingyin</a></p>
+        </div>
+        </div>
         </section>
+
+        <!-- 友链区域 -->
+        <section id="friends">
+            <div class="resource-category">
+            <h2>友情链接</h2>
+            <p>这些是我的朋友们，欢迎访问他们的网站</p>
+            <div class="card friends-list">
+                <a href="https://github.com/nanlingyin/Lynnnet" target="_blank"><i class="fas fa-link"></i> LynngNAN的个人站（示例）</a>
+                <!-- 更多友链将通过表单提交动态添加 -->
+            </div>            <div class="add-friend-link">
+                <a href="friend-link.html" class="friend-link-btn"><i class="fas fa-plus-circle"></i> 申请添加友链</a>
+            </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- 页脚 -->

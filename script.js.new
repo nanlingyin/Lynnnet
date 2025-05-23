@@ -183,57 +183,33 @@ document.addEventListener('DOMContentLoaded', function() {
     // 时间轴数据 - 可以根据需要修改这些事件和日期
     const timelineData = [
         {
-            date: '2024年8月',
+            date: '2020年9月',
             title: '大学生活',
-            content: '进入shzu，就读软件工程NIIT专业',
+            content: '进入大学学习软件工程专业',
             image: '' 
         },
         {
-            date: '2024年9月',
-            title: '接触科研',
-            content: '首次阅读论文并开始学习论文写作与阅读技巧',
-            image: '' 
-        },
-        {
-            date: '2024年10月',
+            date: '2021年3月',
             title: '首个项目',
-            content: 'PTmodel：零售经营数据分析与市场需求预测系统',
+            content: '完成第一个网页游戏项目',
             image: '' 
         },
         {
-            date: '2024年11月',
-            title: '个人网站',
-            content: '自学html，在ai帮助下本站建立',
+            date: '2022年5月',
+            title: 'AI研究',
+            content: '开始自学人工智能相关知识',
             image: '' 
         },
         {
-            date: '2024年12月',
-            title: '首篇论文',
-            content: '完成个人首篇论文：“HIYO-Encoder”',
+            date: '2023年2月',
+            title: '开源项目',
+            content: '参与GitHub开源项目开发',
             image: '' 
         },
         {
-            date: '2025年2月',
-            title: '首次参会',
-            content: '参加2025ETAI并作Pre',
-            image: '' 
-        },
-        {
-            date: '2025年3月',
-            title: '生日',
-            content: '3月22日是Lynn的生日捏',
-            image: '' 
-        },
-        {
-            date: '2025年4月',
-            title: '算法竞赛',
-            content: '蓝桥三等奖坠机，acm校赛专业组三等奖坠机，新大icpc三道打铁，我是路边！',
-            image: '' 
-        },
-        {
-            date: '2025年5月',
-            title: '摸鱼时间记录',
-            content: '完成项目摸鱼时间记录',
+            date: '2024年1月',
+            title: '个人站点',
+            content: '开发个人资源分享网站',
             image: '' 
         }
     ];

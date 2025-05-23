@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- 添加标签页图标 -->
+        <link rel="icon" type="image/jpeg" href="images/profile.jpg">
+        <title>申请友链 - LynngNAN的个人站</title>
+        <link rel="stylesheet" href="styles.css">
+        <!-- Font Awesome 图标库 -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dyZK6YIexQXU/tVdbUw3+KsuG56QZ+1Kn3mV9V6L0XbLmz6/O+VspMRtQ6LQzdB7K6Jhoy3nOTXqhqynge0eZw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+<body>
+    <!-- 粒子背景容器 -->
+    <div id="particles-js"></div>
+
+    <!-- 头部 -->
+    <header>
+        <div class="site-title">
+            <img src="images/logo.jpeg" alt="Logo" class="logo">
+            <h1>申请友链</h1>
+            <button class="menu-toggle" id="menu-toggle" aria-label="切换菜单">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+        <nav id="nav-menu">
+            <ul>
+                <li><a href="index.html#about">个人介绍</a></li>
+                <li><a href="index.html#resources">常用资源</a></li>
+                <li><a href="index.html#projects">个人作品</a></li>
+                <li><a href="index.html#tutorials">教程</a></li>
+                <li><a href="index.html#friends">友情链接</a></li>
+                <li><a href="index.html#donate">捐赠</a></li>
+                <li><a href="index.html#connect">联系方式</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 主内容 -->
+    <main>
+        <section id="friend-link-form">
+            <h2>申请友链</h2>
+            <p>请填写以下信息申请添加友链，提交后我会尽快审核</p>            <!-- Formspree表单 - 已配置 -->
+            <form action="https://formspree.io/f/myzwaoyn" method="POST" class="friend-form">
+                <div class="form-group">
+                    <label for="site-name">网站名称 <span class="required">*</span></label>
+                    <input type="text" name="site-name" id="site-name" required placeholder="例如：LynngNAN的个人站">
+                </div>
+                
+                <div class="form-group">
+                    <label for="site-url">网站链接 <span class="required">*</span></label>
+                    <input type="url" name="site-url" id="site-url" required placeholder="例如：https://example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="site-desc">网站描述 <span class="required">*</span></label>
+                    <input type="text" name="site-desc" id="site-desc" required placeholder="简短描述你的网站">
+                </div>
+                
+                <div class="form-group">
+                    <label for="site-icon">网站图标</label>
+                    <input type="url" name="site-icon" id="site-icon" placeholder="图标链接（可选）">
+                </div>
+                
+                <div class="form-group">
+                    <label for="owner-email">站长邮箱 <span class="required">*</span></label>
+                    <input type="email" name="owner-email" id="owner-email" required placeholder="用于联系通知">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">留言</label>
+                    <textarea name="message" id="message" rows="3" placeholder="有什么想说的吗？"></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">提交申请</button>
+                    <button type="button" class="back-button" onclick="window.history.back()">返回</button>
+                </div>
+            </form>
+            
+            <div class="form-info">
+                <h3>友链申请须知</h3>
+                <ul>
+                    <li>请确保你的网站内容健康、合法</li>
+                    <li>网站需要已添加本站友链</li>
+                    <li>网站需要有一定的原创内容</li>
+                    <li>提交后我会收到邮件通知，审核通过后会添加到友链列表</li>
+                </ul>
+                  <div class="my-link-info">
+                    <h3>我的友链信息</h3>
+                    <p>网站名称：LynngNAN的个人站</p>
+                    <p>网站链接：https://lynngnan.xyz</p>
+                    <p>网站描述：南凌音的个人资源分享站</p>
+                    <p>网站图标：暂无</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>&copy; 2024 LynngNAN的个人站</p>
+        <p>本站完全开源： <a href="https://github.com/nanlingyin/Lynnnet"><i class="fas fa-code-branch"></i> https://github.com/nanlingyin/Lynnnet</a></p>
+        <p><a href="#" id="contributors-link"><i class="fas fa-users"></i> 点此查看贡献者</a></p>
+    </footer>
+
+    <!-- 贡献者模态窗口 -->
+    <div id="contributors-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>贡献者</h2>
+            <div class="contributors-images">
+                <!-- 贡献者图片 -->
+            </div>
+            <p>感谢上述捐赠者/贡献者为lynnnet提供的帮助</p>
+            <p>金色高光的Contributor在我的网站开发过程中作出了突出贡献</p>
+        </div>
+    </div>
+
+    <!-- 悬浮按钮 -->
+    <div id="floating-button">
+        <div id="float-button-circle">+</div>
+    </div>
+
+    <!-- 悬浮菜单 -->
+    <div id="floating-menu">
+        <ul>
+            <li><a href="index.html#about">个人介绍</a></li>
+            <li><a href="index.html#resources">常用资源</a></li>
+            <li><a href="index.html#projects">个人作品</a></li>
+            <li><a href="index.html#tutorials">教程</a></li>
+            <li><a href="index.html#friends">友情链接</a></li>
+            <li><a href="index.html#donate">捐赠</a></li>
+            <li><a href="index.html#connect">联系方式</a></li>
+            <li><button id="toggle-particles-effect">切换粒子效果</button></li>
+        </ul>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="particles.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
