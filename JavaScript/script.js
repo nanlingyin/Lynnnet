@@ -1,0 +1,339 @@
+// script.js
+
+// 菜单切换功能
+const menuToggle = document.getElementById('menu-toggle');
+const navMenu = document.getElementById('nav-menu');
+(function () {
+    // 被编码后的目标链接
+    var encodedRedirectUrl = "aHR0cHM6Ly9zcGFjZS5iaWxpYmlsaS5jb20vMzQ5NzA3MjU0";
+  
+    // 域名白名单
+    var domainWhiteList = [
+      "bHlubmduYW4ueHl6",
+      "d3d3Lmx5bm5nbmFuLnh5eg==",
+      "bG9jYWxob3N0",
+      "MTI3LjAuMC4x"
+    ];
+  
+    // true 为跳转后保留路径和查询参数
+    var is_keep_path_and_query = true;
+    var targetRedirectUrl = is_keep_path_and_query
+      ? atob(encodedRedirectUrl) + window.location.pathname + window.location.search
+      : atob(encodedRedirectUrl);
+  
+    // 如果当前域名不在域名白名单中就跳转
+    if (!domainWhiteList.includes(btoa(document.location.hostname))) {
+      window.location.href = targetRedirectUrl;
+    }
+  })();
+menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    menuToggle.classList.toggle('active'); /* 切换active类以触发旋转 */
+});
+
+// 贡献者模态窗口功能
+const contributorsLink = document.getElementById('contributors-link');
+const contributorsModal = document.getElementById('contributors-modal');
+const closeModal = document.querySelector('.modal .close');
+
+// 打开模态窗口
+contributorsLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    contributorsModal.style.display = 'block';
+});
+
+// 关闭模态窗口
+closeModal.addEventListener('click', () => {
+    contributorsModal.style.display = 'none';
+});
+
+// 点击模态窗口外部关闭窗口
+window.addEventListener('click', (event) => {
+    if (event.target == contributorsModal) {
+        contributorsModal.style.display = 'none';
+    }
+});
+
+// 动态调整导航链接
+document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('#nav-menu ul li a');
+    const currentPage = window.location.pathname.split('/').pop(); // 获取当前页面文件名
+
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href.startsWith('#')) {
+            // 如果是内部锚点链接
+            if (currentPage !== 'index.html' && currentPage !== '') {
+                // 如果当前页面不是主页
+                link.setAttribute('href', `index.html${href}`);
+            }
+            // 如果是主页，则保持不变
+        }
+    });
+});
+
+// 悬浮按钮功能
+const floatingButton = document.getElementById('floating-button');
+const floatingMenu = document.getElementById('floating-menu');
+let isDraggingFloating = false;
+
+// 悬浮按钮点击事件
+floatingButton.addEventListener('click', (e) => {
+    if (!isDraggingFloating) { // 仅在非拖动时触发
+        if (floatingMenu.style.display === 'block') {
+            floatingMenu.style.display = 'none';
+        } else {
+            floatingMenu.style.display = 'block';
+            positionFloatingMenu();
+        }
+    }
+});
+
+// 监听页面加载完成后确保悬浮按钮和菜单的位置
+document.addEventListener('DOMContentLoaded', () => {
+    resetFloatingPosition();
+});
+
+// 监听滚动事件，确保悬浮按钮和菜单在页面底部也能正常工作
+window.addEventListener('scroll', () => {
+    // 可根据需要添加相关逻辑
+    // 例如：确保悬浮按钮不被底部内容遮挡
+});
+
+// 位置调整函数优化
+function positionFloatingMenu() {
+    // 不再动态计算位置，保持固定位置
+}
+
+// 重置悬浮按钮和菜单位置到右下角
+function resetFloatingPosition() {
+    floatingButton.style.left = '';
+    floatingButton.style.top = '';
+    floatingButton.style.right = '20px';
+    floatingButton.style.bottom = '20px';
+    floatingMenu.style.left = '';
+    floatingMenu.style.top = '';
+    floatingMenu.style.bottom = '80px';
+    floatingMenu.style.right = '20px';
+    floatingMenu.style.display = 'none'; // 初始化时隐藏悬浮菜单
+}
+
+// 其他优化：增加点击区域扩大用户体验
+document.addEventListener('click', (event) => {
+    if (!floatingButton.contains(event.target) && !floatingMenu.contains(event.target)) {
+        floatingMenu.style.display = 'none';
+    }
+});
+
+// 切换粒子效果
+const toggleParticlesBtn = document.getElementById('toggle-particles-effect');
+let particlesEnabled = true;
+
+toggleParticlesBtn.addEventListener('click', () => {
+    particlesEnabled = !particlesEnabled;
+    if (particlesEnabled) {
+        particlesJS.load('particles-js', 'particles.json', function() {
+            console.log('particles.js loaded - callback');
+        });
+    } else {
+        // 停止粒子效果
+        if (window.pJSDom && window.pJSDom.length > 0) {
+            window.pJSDom[0].pJS.fn.vendors.destroypJS();
+            window.pJSDom = [];
+        }
+    }
+});
+
+// 切换鼠标拖尾效果
+const toggleMouseTrailBtn = document.getElementById('toggle-mouse-trail');
+let mouseTrailEnabled = false;
+const mouseTrailContainer = document.getElementById('mouse-trail');
+
+toggleMouseTrailBtn.addEventListener('click', () => {
+    mouseTrailEnabled = !mouseTrailEnabled;
+    if (mouseTrailEnabled) {
+        document.addEventListener('mousemove', createMouseTrail);
+    } else {
+        document.removeEventListener('mousemove', createMouseTrail);
+        mouseTrailContainer.innerHTML = ''; // 清空拖尾效果
+    }
+});
+
+function createMouseTrail(e) {
+    const trail = document.createElement('div');
+    trail.className = 'cursor-effect';
+    trail.style.left = `${e.clientX}px`;
+    trail.style.top = `${e.clientY}px`;
+    mouseTrailContainer.appendChild(trail);
+}
+
+// 监听页面尺寸变化，适配移动端和桌面端
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+        // 桌面端时，保持当前位置
+    } else {
+        // 移动端时，重置到右下角
+        resetFloatingPosition();
+        floatingMenu.style.display = 'none'; // 隐藏悬浮菜单
+    }
+});
+
+// 时间轴功能
+document.addEventListener('DOMContentLoaded', function() {
+    // 时间轴数据 - 可以根据需要修改这些事件和日期
+    const timelineData = [
+        {
+            date: '2024年8月',
+            title: '大学生活',
+            content: '进入shzu，就读软件工程NIIT专业',
+            image: '' 
+        },
+        {
+            date: '2024年9月',
+            title: '接触科研',
+            content: '首次阅读论文并开始学习论文写作与阅读技巧',
+            image: '' 
+        },
+        {
+            date: '2024年10月',
+            title: '首个项目',
+            content: 'PTmodel：零售经营数据分析与市场需求预测系统',
+            image: '' 
+        },
+        {
+            date: '2024年11月',
+            title: '个人网站',
+            content: '自学html，在ai帮助下本站建立',
+            image: '' 
+        },
+        {
+            date: '2024年12月',
+            title: '首篇论文',
+            content: '完成个人首篇论文：“HIYO-Encoder”',
+            image: '' 
+        },
+        {
+            date: '2025年2月',
+            title: '首次参会',
+            content: '参加2025ETAI并作Pre',
+            image: '' 
+        },
+        {
+            date: '2025年3月',
+            title: '生日',
+            content: '3月22日是Lynn的生日捏',
+            image: '' 
+        },
+        {
+            date: '2025年4月',
+            title: '算法竞赛',
+            content: '蓝桥三等奖坠机，acm校赛专业组三等奖坠机，新大icpc三道打铁，我是路边！',
+            image: '' 
+        },
+        {
+            date: '2025年5月',
+            title: '摸鱼时间记录',
+            content: '完成项目摸鱼时间记录',
+            image: '' 
+        }
+    ];
+
+    // 获取时间轴相关元素
+    const timelineLine = document.querySelector('.timeline-line');
+    const timelineEvents = document.querySelector('.timeline-events');
+    const prevButton = document.getElementById('prev-event');
+    const nextButton = document.getElementById('next-event');
+    
+    if (!timelineLine || !timelineEvents || !prevButton || !nextButton) return;
+    
+    let currentIndex = 0;
+    
+    // 初始化时间轴点和事件
+    function initTimeline() {
+        // 清空现有内容
+        timelineLine.innerHTML = '';
+        timelineEvents.innerHTML = '';
+        
+        // 创建时间点
+        timelineData.forEach((item, index) => {
+            // 创建时间点
+            const point = document.createElement('div');
+            point.className = 'timeline-point';
+            point.setAttribute('data-index', index);
+            point.setAttribute('data-date', item.date);
+            point.style.left = `${(index / (timelineData.length - 1)) * 100}%`;
+            
+            // 添加点击事件
+            point.addEventListener('click', () => {
+                showEvent(index);
+            });
+            
+            timelineLine.appendChild(point);
+            
+            // 创建事件内容
+            const event = document.createElement('div');
+            event.className = 'timeline-event';
+            event.setAttribute('data-index', index);
+            
+            let eventContent = `<h3>${item.title}</h3><p>${item.content}</p>`;
+            if (item.image) {
+                eventContent += `<img src="${item.image}" alt="${item.title}">`;
+            }
+            
+            event.innerHTML = eventContent;
+            timelineEvents.appendChild(event);
+        });
+        
+        // 显示第一个事件
+        showEvent(0);
+    }
+    
+    // 显示指定索引的事件
+    function showEvent(index) {
+        // 更新当前索引
+        currentIndex = index;
+        
+        // 更新所有时间点和事件的状态
+        const points = document.querySelectorAll('.timeline-point');
+        const events = document.querySelectorAll('.timeline-event');
+        
+        points.forEach(point => {
+            point.classList.remove('active');
+            if (parseInt(point.getAttribute('data-index')) === index) {
+                point.classList.add('active');
+            }
+        });
+        
+        events.forEach(event => {
+            event.classList.remove('active');
+            if (parseInt(event.getAttribute('data-index')) === index) {
+                event.classList.add('active');
+            }
+        });
+        
+        // 更新导航按钮状态
+        updateNavButtons();
+    }
+    
+    // 更新导航按钮状态
+    function updateNavButtons() {
+        prevButton.disabled = currentIndex === 0;
+        nextButton.disabled = currentIndex === timelineData.length - 1;
+    }
+    
+    // 绑定导航按钮事件
+    prevButton.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            showEvent(currentIndex - 1);
+        }
+    });
+    
+    nextButton.addEventListener('click', () => {
+        if (currentIndex < timelineData.length - 1) {
+            showEvent(currentIndex + 1);
+        }
+    });
+    
+    // 初始化时间轴
+    initTimeline();
+});

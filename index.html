@@ -1,248 +1,180 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- 添加标签页图标 -->
-        <link rel="icon" type="image/jpeg" href="images/profile.jpg">
-        <title>首页 - LynngNAN的个人站</title>
-        <link rel="stylesheet" href="styles.css">
-        <!-- Font Awesome 图标库 -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dyZK6YIexQXU/tVdbUw3+KsuG56QZ+1Kn3mV9V6L0XbLmz6/O+VspMRtQ6LQzdB7K6Jhoy3nOTXqhqynge0eZw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    </head>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页/Lynn</title>
+    <script src="https://unpkg.com/oh-my-live2d@latest"></script>
+    <link rel="icon" type="image/jpeg" href="../Pic/images/profile.jpg">
+    <link rel="stylesheet" href="../Css/reset.css">
+    <link rel="stylesheet" href="../Css/index.css">
+    <link rel="stylesheet" href="../Css/Icon/iconfont.css">
+    <link rel="icon" type="image/jpeg" href="images/profile.jpg">
+    <!-- Live2D Widget CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/live2d-widget@3.x/lib/L2Dwidget.min.css" />
+    <!-- 引入Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <style>
+         body{
+             /* background-image: linear-gradient(to left,rgb(115,52,159),rgb(130, 87, 177),rgb(85,85,161)); */
+             background-color: #62739c;
+             height: 3800px;
+             font-family: 'Roboto', sans-serif;
+         }
+         a{
+             text-decoration: none;
+         }
+         
+         /* Live2D模型容器样式 */
+         #live2d-widget {
+             position: fixed !important;
+             left: 20px !important;
+             bottom: 20px !important;
+             width: 280px !important;
+             height: 250px !important;
+             z-index: 999 !important;
+             pointer-events: auto !important;
+         }
+         
+         /* 确保Live2D不被其他元素遮挡 */
+         .live2d-widget-container {
+             position: fixed !important;
+             left: 20px !important;
+             bottom: 20px !important;
+         }
+         
+         /* 移动端适配 */
+         @media (max-width: 768px) {
+             #live2d-widget {
+                 width: 200px !important;
+                 height: 180px !important;
+                 left: 10px !important;
+                 bottom: 10px !important;
+             }
+         }
+    </style>
+</head>
 <body>
-    <!-- 粒子背景容器 -->
-    <div id="particles-js"></div>
-    <!-- 鼠标拖尾效果容器 -->
-    <div id="mouse-trail" class="mouse-trail"></div>
-
-    <!-- 头部 -->
-    <header>
-        <div class="site-title">
-            <img src="images/logo.jpeg" alt="Logo" class="logo">
-            <h1>LynngNAN的个人站</h1>
-            <button class="menu-toggle" id="menu-toggle" aria-label="切换菜单">
-                <span class="hamburger"></span>
-            </button>
+    
+    <!-- 语言切换按钮 -->
+    <button id="language-toggle" class="language-toggle" onclick="toggleLanguage()" title="切换语言">EN</button>
+    
+    <div class="zd"></div>
+    <a class="zd1" href="#top">
+        <i class="iconfont icon-shang"></i>
+        <img src="../Pic/index/0.png" alt="回到顶部" width="60px" data-i18n="back_to_top" title="回到顶部">
+    </a>
+    <div class="topt" id="#top"></div>
+    <div class="topa">
+        <div class="topal">
+            <a href="../Html/me.html" class="tal1">
+                <h1 data-i18n="about_me">关于我</h1>
+            </a>
+            <a href="../Html/share.html" class="tal1">
+                <h1 data-i18n="resource_share">资源分享</h1>
+            </a>
+            <a href="" class="tal1">
+                <h1></h1>
+            </a>
         </div>
-        <nav id="nav-menu">            <ul>
-                <li><a href="#about">个人介绍</a></li>
-                <li><a href="#resources">常用资源</a></li>
-                <li><a href="#projects">个人作品</a></li>
-                <li><a href="#tutorials">教程</a></li>
-                <li><a href="#friends">友情链接</a></li>
-                <li><a href="#donate">捐赠</a></li>
-                <li><a href="#connect">联系方式</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- 主内容 -->
-    <main>        <section id="about">
-            <h2>个人介绍</h2>
-            <img src="images/profile.jpg" alt="个人照片" class="profile-image">
-            <p>这里是南凌音喵，目前就读于shzu，软件工程专业，大一。</p>
-            <p>研究方向LLM的幻觉缓解，同时个人对人工智能有极大的兴趣。</p>
-            <p>同时是一个旮旯批兼末流码农，当然你找我打瓦打cs2我也很高兴。</p>
-            <p>前网名洛亦离999，混scratch吧的可能会知道我。</p>
-            <p>这个网站是我对html的尝试，我想把它做成一个资源分享和教程网站。</p>
-            <p>这也是我的第一个网站，请多多指教奥。</p>
-            <p>欢迎联系我哦！</p>
-        </section>
-        
-        <!-- 时间轴部分 -->
-        <section id="timeline">
-            <h2>我的时间轴</h2>
-            <div class="timeline-container">
-                <div class="timeline-controls">
-                    <button id="prev-event" class="timeline-btn"><i class="fas fa-chevron-left"></i> 上一个</button>
-                    <button id="next-event" class="timeline-btn">下一个 <i class="fas fa-chevron-right"></i></button>
-                </div>
-                <div class="timeline-wrapper">
-                    <div class="timeline-line">
-                        <!-- 时间点将通过JS动态生成 -->
-                    </div>
-                    <div class="timeline-events">
-                        <!-- 事件内容将通过JS动态生成 -->
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="resources">
-            <h2>常用资源链接</h2>
-            <div class="resource-category">
-                <h3>开发工具</h3>
-                <h4>（均为官网链接）</h4>
-                <div class="card">
-                    <a href="https://www.jetbrains.com/pycharm/download/"><i class="fas fa-code"></i> Pycharm</a>
-                    <a href="https://code.visualstudio.com/"><i class="fas fa-laptop-code"></i> VSCode</a>
-                    <a href="https://sourceforge.net/projects/dev-cpp/"><i class="fas fa-project-diagram"></i> DevC++</a>
-                    <a href="https://www.cursor.com/"><i class="fas fa-mouse-pointer"></i> Cursor</a>
-                    <a href="https://visualstudio.microsoft.com/zh-hans/vs/"><i class="fas fa-desktop"></i> VS</a>
-                    <a href="https://notepad-plus-plus.org/"><i class="fas fa-edit"></i> Notepad++</a>
-                    <a href="https://github.blog/news-insights/product-news/sunsetting-atom/"><i class="fas fa-atom"></i> Atom</a>
-                </div>
-            </div>
-            <div class="resource-category">
-                <h3>学习资源</h3>
-                <div class="card">
-                    <a href="https://pan.baidu.com/s/1WDMVWYexVfSraylA9CflJw"><i class="fas fa-book"></i> 听说你想学高数？密码：0721</a>
-                    <a href="https://pan.baidu.com/s/1NIpwszFnsyM8mzIX-OhB8g"><i class="fas fa-graduation-cap"></i> 兄弟想考四六级卷死我吗？密码：0d00</a>
-                    <a href="https://www.bilibili.com/video/BV1dr4y1n7vA/?spm_id_from=333.337.search-card.all.click"><i class="fas fa-video"></i> 你说你想学C语言吗？这次没密码了</a>
-                    <a href="https://pan.baidu.com/s/14TqCDpzygHFIMtmc7YYQTw"><i class="fas fa-robot"></i> 听说你要研究人工智能？密码：aiai</a>
-                    <a href="https://pan.baidu.com/s/1u9Yn0-MI4ri1P9ruat_8NQ"><i class="fas fa-chart-line"></i> 想要入坑算法竞赛吗（acwing）？密码：rpup</a>
-                    <a href="https://pan.baidu.com/s/1o2zHiKSPpR9KuLxkshxB1Q"><i class="fas fa-trophy"></i> 你要成为ACM高手？密码：rpup</a>
-                </div>
-            </div>
-            <div class="resource-category">
-                <h3>设计素材</h3>
-                <div class="card">
-                    <a href="https://pan.baidu.com/s/1a4TKdpM7JvUyNVkuLnes0g"><i class="fas fa-paint-brush"></i> 你要写简历没模板吗？密码：2077</a>
-                    <a href="https://pan.baidu.com/s/1AeyEsiAMtEyGUytgLeA2fg"><i class="fas fa-file-alt"></i> 开题答辩，考研复试没模板密码：tsuk</a>
-                </div>
-            </div>
-            <div class="resource-category">
-                <h3>神奇网站</h3>
-                <h4>（一些功能不错的网站）</h4>
-                <div class="card">
-                    <a href="https://ccfddl.top/"><i class="fas fa-search"></i> 会议期刊截稿时间查询网站</a>
-                    <a href="https://app.txyz.ai/"><i class="fas fa-robot"></i> tzyzAI论文解读</a>
-                    <a href="https://api.ephone.chat/register?aff=MBEQ"><i class="fas fa-comments"></i> GPT大语言模型免费调用，每天签到送余额（强推，比很多ai软件强）</a>
-                    <a href="https://bohrium.dp.tech/apps/scholar?utm_source=bdsem&utm_medium=search&utm_campaign=bohrium&utm_term=googlexuesu&bd_vid=12143740261564220054"><i class="fas fa-graduation-cap"></i> 国内可以访问的学术搜索助手</a>
-                    <a href="https://www.ilovepdf.com/zh-cn"><i class="fas fa-file-pdf"></i> 超好用的pdf工具网站</a>
-                    <a href="https://www.pptsupermarket.com/"><i class="fas fa-file-powerpoint"></i> ppt市场，一键生成ppt</a>
-                    <a href="https://gamma.app/"><i class="fas fa-file-powerpoint"></i> gamma，一键生成ppt</a>
-                    <a href="https://www.canva.cn/"><i class="fas fa-paint-brush"></i> 可画，上手非常简单的设计网站</a>
-                    <a href="https://www.pexels.com/zh-cn/"><i class="fas fa-camera"></i> pexels，免费摄影素材合集</a>
-                    <a href="https://veleap.com/page/product_list?page=1&type=1"><i class="fas fa-images"></i> Leap免费设计素材合集</a>
-                    <a href="https://pingti.app/"><i class="fas fa-shopping-cart"></i> 穷学生必备，找一个你想要的东西的低价替代用品</a>
-                </div>
-                <h4>（一些ACG网站）我我我我不是二次元啊</h4>
-                <div class="card">
-                    <a href="https://www.lmm36.com/"><i class="fas fa-tv"></i> 全网番剧免费观看（有少量广告）</a>
-                    <a href="https://www.ymgal.games/"><i class="fas fa-gamepad"></i> 旮旯给木资讯站</a>
-                    <a href="https://anitabi.cn/map"><i class="fas fa-map-marked-alt"></i> 圣地巡礼地图</a>
-                    <a href="https://vtbs.moe/"><i class="fas fa-user-friends"></i> DD斩首，虚拟主播大数据</a>
-                    <a href="http://dddh.fun/download.html"><i class="fas fa-mobile-alt"></i> 手机下载链接（个人使用）滴滴动漫，专门看番看漫画用</a>
-                    <p>就是说你想要更多更有意思的ACG网站或者资源欢迎给我发邮箱</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects">
-            <div class="resource-category">
-            <h2>个人作品</h2>
-            <div class="card">
-                <a href="https://github.com/nanlingyin/Lynnnet"><i class="fas fa-code"></i> Lynnnet，LynngNAN的个人资源分享站（本站源码）</a>
-                <a href="https://github.com/nanlingyin/PTmodel"><i class="fas fa-chart-bar"></i> PTmodel：基于回归模型的零售经营数据分析与市场需求预测系统</a>
-                <a href="https://github.com/nanlingyin/HIYO-Encoder"><i class="fas fa-chart-bar"></i> HIYO-Encoder：个人首篇论文代码库</a>
-                <a href="https://github.com/nanlingyin/fishtime"><i class="fas fa-chart-bar"></i> 一个摸鱼时间记录软件，用于记录电脑应用使用时间以并进行可视化，提升个人专注力</a>
-            </div>
-            </div>
-        </section>
-        
-        <section id="tutorials">
-            <div class="resource-category">
-            <h2>教程</h2>
-            <div class="card">
-                <a href="https://www.example.com/tutorial1"><i class="fas fa-graduation-cap"></i> 教程1</a>
-                <a href="https://www.example.com/tutorial2"><i class="fas fa-graduation-cap"></i> 教程2</a>
-            </div>
-            </div>
-            <p>本板块暂无链接，每个链接的内容后面会慢慢更新的哦！</p>
-        </section>
-
-        <section id="donate">
-            <div class="resource-category">
-            <h2>捐赠</h2>
-            <p>支持我的方式：</p>
-            <div class="card">
-            <a href="donate.html" class="donate-link"><i class="fas fa-hand-holding-heart"></i> 捐赠</a>
-            </div>
-            </div>
-        </section>
-
-        <section id="connect">
-            <div class="resource-category">
-            <h2>联系方式</h2>
-            <p>欢迎联系</p>
-            <div class="card">
-            <p><a href="mailto:20241008398@stu.shzu.edu.cn"><i class="fas fa-envelope"></i> 20241008398@stu.shzu.edu.cn</a></p>
-            <p><a href="https://github.com/nanlingyin"><i class="fab fa-github"></i> https://github.com/nanlingyin</a></p>
+        <div class="topaa">
+            <a href="">
+                <h2>Lynn</h2>
+            </a>
         </div>
-        </div>
-        </section>
-
-        <!-- 友链区域 -->
-        <section id="friends">
-            <div class="resource-category">
-            <h2>友情链接</h2>
-            <p>这些是我的朋友们，欢迎访问他们的网站</p>
-            <div class="card friends-list">
-                <a href="https://github.com/nanlingyin/Lynnnet" target="_blank"><i class="fas fa-link"></i> LynngNAN的个人站（示例）</a>
-                <!-- 更多友链将通过表单提交动态添加 -->
-            </div>            <div class="add-friend-link">
-                <a href="friend-link.html" class="friend-link-btn"><i class="fas fa-plus-circle"></i> 申请添加友链</a>
-            </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- 页脚 -->
-    <footer>
-        <p>&copy; 2024 LynngNAN的个人站</p>
-        <p>本站完全开源： <a href="https://github.com/nanlingyin/Lynnnet"><i class="fas fa-code-branch"></i> https://github.com/nanlingyin/Lynnnet</a></p>
-        <p><a href="#" id="contributors-link"><i class="fas fa-users"></i> 点此查看贡献者</a></p>
-    </footer>
-
-    <!-- 贡献者模态窗口 -->
-    <div id="contributors-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>贡献者</h2>
-            <div class="contributors-images">
-                <!-- 替换为您的贡献者图片 -->
-                <img src="contributors/1.jpg" alt="贡献者1" class="highlighted-contributor">
-                <img src="contributors/2.jpg" alt="贡献者2">
-                <img src="contributors/3.jpg" alt="贡献者3" class="highlighted-contributor">
-                <img src="contributors/4.png" alt="贡献者4" class="highlighted-contributor">
-                <img src="contributors/5.jpg" alt="贡献者5">
-                <img src="contributors/6.jpg" alt="贡献者6">
-                <img src="contributors/7.jpg" alt="贡献者7">
-                <img src="contributors/8.jpg" alt="贡献者8" class="highlighted-contributor">
-                <img src="contributors/9.jpg" alt="贡献者9" class="highlighted-contributor">
-                <img src="contributors/10.jpg" alt="贡献者10" class="highlighted-contributor">
-                <img src="contributors/11.jpg" alt="贡献者11">
-                <!-- 添加更多图片根据需要 -->
-            </div>
-            <p>感谢上述捐赠者/贡献者为lynnnet提供的帮助</p>
-            <p>金色高光的Contributor在我的网站开发过程中作出了突出贡献</p>
+        <div class="topar">
+            <a href="../Html/donate.html"class="tar1">
+                <h1 data-i18n="donate">捐赠</h1>
+            </a>
+            <a href="../Html/friend-link.html" class="tar1">
+                <h1 data-i18n="friend_link">友链</h1>
+            </a>
         </div>
     </div>
-
-    <!-- 悬浮按钮 -->
-    <div id="floating-button">
-        <div id="float-button-circle">+</div>
+    <div class="topb">
+        <div class="topbl">
+            <div class="tb1">
+                <a href="../Html/special/eye.html" data-i18n="eye_tracking">我会一直视奸你</a>
+            </div>
+            <div class="tb2">
+                <a href="../Html/special/follow.html" data-i18n="mouse_follow">跟踪鼠标</a>
+            </div>
+            <div class="tb3">
+                <a href="../Html/special/galaxy.html" data-i18n="galaxy">星辰宇宙</a>
+            </div>
+            <div class="tb4">
+                <a href="../Html/special/color_bubble.html" data-i18n="color_bubble">七彩泡泡</a>
+            </div>
+            <div class="tb5">
+                <a href=""></a>
+            </div>
+            <div class="tb6">
+                <a href="../Html/Sc/Ydq.html"></a>
+            </div>
+            <div class="tb7">
+                <a href="../Html/Sc/Nxq1.html"></a>
+            </div>
+            <div class="tb8">
+                <a href="../Html/Sc/Nxq2.html"></a>
+            </div>
+            <div class="tb9">
+                <a href="../Html/Sc/Ydfk.html"></a>
+            </div>
+        </div>
+        <div class="topba">
+            
+        </div>
+        <div class="topbr"></div>
+        <div class="fj"></div>
+        <div class="auto">
+            <div class="auto1">
+                <div class="autot">
+                    <a href="share1.html" class="autot1">
+                        <span data-i18n="more">更多</span>
+                        <i class="iconfont icon-kucunqingkuang"></i>
+                    </a>
+                </div>
+                <div class="autob">
+                    <ul class="bz">
+                        <li><img src="../Pic/index/3/4-1.png" height="470px"></li>
+                        <li><img src="../Pic/index/3/4-2.png" height="470px"></li>
+                        <li><img src="../Pic/index/3/4-3.png" height="470px"></li>
+                        <li><img src="../Pic/index/3/4-4.png" height="470px"></li>
+                        <li><img src="../Pic/index/3/4-5.png" height="470px"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <!-- 悬浮菜单 -->
-    <div id="floating-menu">
-        <ul>
-            <li><a href="#about">个人介绍</a></li>
-            <li><a href="#resources">常用资源</a></li>
-            <li><a href="#projects">个人作品</a></li>
-            <li><a href="#tutorials">教程</a></li>
-            <li><a href="#donate">捐赠</a></li>
-            <li><a href="#connect">联系方式</a></li>
-            <li><button id="toggle-particles-effect">切换粒子效果</button></li>
-            <li><button id="toggle-mouse-trail">切换鼠标拖尾</button></li>
-        </ul>
-    </div>
-
-    <!-- JavaScript -->
-    <script src="particles.min.js"></script>
-    <script src="script.js"></script>
+    
+    <!-- 国际化脚本 -->
+    <script src="../Js/i18n.js"></script>
+    
+    <!-- Live2D Widget JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/live2d-widget@3.x/lib/L2Dwidget.min.js"></script>
+    <script>
+        // Live2D Widget 配置 - 使用本地tsukimiamane模型
+        L2Dwidget.init({
+            "model": {
+                "jsonPath": "https://unpkg.com/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json", // 使用本地tsukimiamane模型
+                "scale": 1
+            },
+            "display": {
+                "position": "left", // 左下角
+                "width": 280,
+                "height": 250,
+                "hOffset": 20,
+                "vOffset": 20
+            },
+            "mobile": {
+                "show": true, // 移动端显示
+                "scale": 0.8
+            },
+            "react": {
+                "opacityDefault": 0.8,
+                "opacityOnHover": 1
+            }
+        });
+    </script>
 </body>
 </html>

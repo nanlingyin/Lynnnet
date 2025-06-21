@@ -1,0 +1,86 @@
+{
+  "id": "2304422",
+  "name": "Goat",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "339476",
+      "name": "团队",
+      "font_class": "tuandui",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    },
+    {
+      "icon_id": "3553571",
+      "name": "数据",
+      "font_class": "ico_data",
+      "unicode": "e673",
+      "unicode_decimal": 58995
+    },
+    {
+      "icon_id": "14243729",
+      "name": "数据",
+      "font_class": "shuju",
+      "unicode": "e759",
+      "unicode_decimal": 59225
+    },
+    {
+      "icon_id": "18977387",
+      "name": "关闭",
+      "font_class": "guanbi",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "18309109",
+      "name": "file-stream",
+      "font_class": "file-stream",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "18916455",
+      "name": "上",
+      "font_class": "shang",
+      "unicode": "e6bc",
+      "unicode_decimal": 59068
+    },
+    {
+      "icon_id": "1167177",
+      "name": "认证",
+      "font_class": "renzheng",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "14191234",
+      "name": "back",
+      "font_class": "back",
+      "unicode": "e66d",
+      "unicode_decimal": 58989
+    },
+    {
+      "icon_id": "15096037",
+      "name": "仓库结存",
+      "font_class": "kucunqingkuang",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "18901549",
+      "name": "左",
+      "font_class": "zuo",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "18901550",
+      "name": "右",
+      "font_class": "you",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    }
+  ]
+}

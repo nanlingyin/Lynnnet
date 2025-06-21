@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        /* 定义全局变量 */
+        :root {
+            --rotate-speed: 40;
+            --count: 8;
+            --easing: cubic-bezier(0.000, 0.37, 1.000, 0.63);
+        }
+
+        /* 设置页面样式 */
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: linear-gradient(to top, #a18cd177 0%, #fbc2eb77 100%);
+        }
+
+        /* 设置容器样式 */
+        .void {
+            width: 100%;
+            max-width: 1024px;
+            margin: auto;
+            position: relative;
+            aspect-ratio: 1 / 1;
+        }
+
+        /* 鼠标悬停时暂停动画 */
+        ul:hover * {
+            animation-play-state: paused;
+        }
+
+        /* 设置列表样式 */
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            z-index: 1;
+        }
+
+        /* 设置列表项样式 */
+        li {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            animation: rotateCW calc(var(--rotate-speed) * 1s) var(--easing) infinite;
+        }
+
+        /* 设置卡片样式 */
+        .card {
+            width: 27%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 16px 24px;
+            gap: 8px;
+            background: #FFFFFF;
+            box-shadow: 0px 4px 12px rgba(70, 0, 255, 0.1),
+                0px 16px 32px rgba(165, 135, 255, 0.1);
+            border-radius: 12px;
+            font: 400 14px '';
+            color: #535062;
+            animation: rotateCCW calc(var(--rotate-speed) * 1s) var(--easing) infinite;
+        }
+
+        /* 设置图片样式 */
+        .card img {
+            width: 100%;
+        }
+
+        /* 设置链接样式 */
+        a {
+            text-decoration: none;
+            color: unset;
+            display: block;
+            height: 80px;
+            overflow: hidden;
+        }
+
+        /* 设置模型名称样式 */
+        .model-name {
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 150%;
+            color: #3B2ED0;
+            display: block;
+            letter-spacing: 3px;
+            color: #6844f7;
+        }
+
+        /* 设置SVG样式 */
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        /* 设置不同列表项的动画延迟 */
+        li:nth-child(2),
+        li:nth-child(2) .card {
+            animation-delay: calc((var(--rotate-speed)/var(--count)) * -1s);
+        }
+
+        li:nth-child(3),
+        li:nth-child(3) .card {
+            animation-delay: calc((var(--rotate-speed)/var(--count)) * -2s);
+        }
+
+        li:nth-child(4),
+        li:nth-child(4) .card {
+            animation-delay: calc((var(--rotate-speed)/var(--count)) * -3s);
+        }
+
+        li:nth-child(5),
+        li:nth-child(5) .card {
+            animation-delay: calc((var(--rotate-speed)/var(--count)) * -4s);
+        }
+
+        li:nth-child(6),
+        li:nth-child(6) .card {
+            animation-delay: calc((var(--rotate-speed)/var(--count)) * -5s);
+        }    
+        li:nth-child(7),
+        li:nth-child(7) .card {
+            animation-delay: calc((var(--rotate-speed)/var(--count)) * -6s);
+        }
+        li:nth-child(8),
+        li:nth-child(8) .card {
+            animation-delay: calc((var(--rotate-speed)/var(--count)) * -7s);
+        }
+        li:nth-child(9),
+        li:nth-child(9) .card {
+            animation-delay: calc((var(--rotate-speed)/var(--count)) * -8s);
+        }
+        li:nth-child(10),
+        li:nth-child(10) .card {
+            animation-delay: calc((var(--rotate-speed)/var(--count)) * -9s);
+        }
+        li:nth-child(11),
+        li:nth-child(11) .card {
+            animation-delay: calc((var(--rotate-speed)/var(--count)) * -10s);
+        }
+        li:nth-child(12),
+        li:nth-child(12) .card {
+            animation-delay: calc((var(--rotate-speed)/var(--count)) * -11s);
+        }
+        /* 定义顺时针旋转动画 */
+        @keyframes rotateCW {
+            from {
+                transform: translate3d(0px, -50%, -1px) rotate(-45deg);
+            }
+
+            to {
+                transform: translate3d(0px, -50%, 0px) rotate(-315deg);
+            }
+        }
+
+        /* 定义逆时针旋转动画 */
+        @keyframes rotateCCW {
+            from {
+                transform: rotate(45deg);
+            }
+
+            to {
+                transform: rotate(315deg);
+            }
+        }
+
+        /* 设置中心圆样式 */
+        .center-circle {
+            position: absolute;
+            width: 230px;
+            aspect-ratio: 1 / 1;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: #FFFFFF;
+            box-shadow: 0px 18px 36px -18px rgba(12, 5, 46, 0.3),
+                0px 30px 60px -12px rgba(12, 5, 46, 0.25);
+            border-radius: 50%;
+            background-size: cover;
+            background-position: -35px 0;
+        }
+
+        /* 设置第二个圆样式 */
+        .second-circle {
+            position: absolute;
+            width: 40%;
+            aspect-ratio: 1 / 1;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: #F5F4FE;
+            opacity: 0.5;
+            box-shadow: 0px 18px 36px -18px rgba(12, 5, 46, 0.3),
+                0px 30px 60px -12px rgba(12, 5, 46, 0.25);
+            border-radius: 50%;
+            background-image: url(./03.gif);
+        }
+
+        /* 设置最后一个圆样式 */
+        .last-circle {
+            position: absolute;
+            width: 66%;
+            aspect-ratio: 1 / 1;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: #F5F4FE;
+            opacity: 0.25;
+            box-shadow: 0px 18px 36px -18px rgba(12, 5, 46, 0.3),
+                0px 30px 60px -12px rgba(12, 5, 46, 0.25);
+            border-radius: 50%;
+            background-image: url(./03.gif);
+        }
+
+        /* 设置裁剪样式 */
+        .crop {
+            -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0),
+                    rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 1));
+        }
+
+        /* 设置遮罩样式 */
+        .mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 50%;
+            background-position: 100% 50%;
+            background-repeat: no-repeat;
+            background-image: radial-gradient(100% 50% at 100% 50%,
+                    rgba(60, 26, 229, 0.25) 0%,
+                    rgba(59, 26, 229, 0.241896) 20%,
+                    rgba(53, 26, 229, 0.1872) 40%,
+                    rgba(41, 23, 240, 0.104) 60%,
+                    rgba(34, 26, 229, 0.0184296) 90%,
+                    rgba(32, 26, 229, 0) 100%);
+        }
+        /* 设置遮罩样式后的效果 */
+        .mask:after {
+            content: "";
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            right: 0;
+            display: block;
+            background-image: linear-gradient(180deg, rgba(60, 26, 229, 0) 0%,
+                    #3C1AE5 50%, rgba(60, 26, 229, 0) 100%);
+        }
+
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: linear-gradient(to top, #9795f0 0%, #fbc8d4 100%);
+        }
+
+        .shell {
+            width: auto;              /* 宽度自适应内容 */
+            min-width: 320px;         /* 可选：最小宽度 */
+            max-width: 90vw;          /* 可选：最大宽度防止溢出 */
+            height: auto;             /* 高度自适应内容 */
+            background: #ffffff;
+            position: relative;
+            margin: 40px auto 0 auto; /* 顶部留白并水平居中 */
+            border-radius: 18px;      /* 可选：圆角更美观 */
+            box-shadow: 0 5px 24px #0001;
+            padding-bottom: 32px;     /* 可选：底部留白 */
+        }
+
+        .head {
+            height: 340px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .head::before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: url("../Pic/me/2/44bf4e4ff8030d1c21709743c42e6a2.jpg");
+            background-size: cover;
+            z-index: -1;
+            transform: skewY(-4deg);
+            transform-origin: 0 0;
+        }
+
+        .cover {
+            position: absolute;
+            top: 190px;
+            left: 25px;
+            width: 220px;
+            z-index: 2;
+            border-radius: 500px;
+            border: 10px #fff solid;
+            box-shadow: 0 5px 10px #00000065;
+        }
+
+        .data {
+            padding: 190px 0 0 280px;
+            text-shadow: 0 0 20px #000;
+        }
+
+        .data .title1 {
+            color: white;
+            font-size: 50px;
+            font: 900 50px '';
+            margin-bottom: 5px;
+            position: relative;
+        }
+
+        .data .title1 span {
+            position: absolute;
+            top: 17px;
+            margin-left: 12px;
+            background: #ffe44c;
+            border-radius: 5px;
+            color: #000000;
+            font-size: 14px;
+            padding: 0px 4px;
+        }
+
+        .data .title2 {
+            color: #fff;
+            font: 500 24px '';
+        }
+
+        .foot {
+            line-height: 26px;
+            color: #444;
+        }
+
+        .tags {
+            padding-left: 30px;
+            padding-top: 100px;
+            width: 250px;
+            float: left;
+            text-align: center;
+        }
+
+        .tag {
+            background: rgb(149, 178, 255);
+            color: #fff;
+            border-radius: 10px;
+            padding: 3px 8px;
+            font-size: 14px;
+            margin-right: 4px;
+            line-height: 35px;
+            cursor: pointer;
+        }
+
+        .tag:hover {
+            background: #eee4ad;
+            color: #444;
+        }
+
+        .introduce {
+            padding: 25px 0 0 35px;
+            width: 480px;
+            float: left;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;   /* 纵向排列 */
+            justify-content: flex-start;
+            align-items: center;
+            /* background-image: linear-gradient(to top, #9795f0 0%, #fbc8d4 100%); */
+            background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)), url(../Pic/me/2/background.png);
+            background-repeat: no-repeat;  
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center center;
+            /* gap: 40px;                上下间距，可调整 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="shell">
+        <img src="../Pic/me/2/29c07728ea852c1333ac1269369e883.jpg" alt="" class="cover">
+        <div class="head">
+            <div class="data">
+                <div class="title1">Lynn<span></span></div>
+                <div class="title2">喜欢计算机</div>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="tags">
+                <span class="tag">#LLM</span>
+                <span class="tag">#旮旯批</span>
+                <span class="tag">#人工智能</span>
+                <span class="tag">#scratch吧</span>
+            </div>
+            <div class="introduce">
+                <p>
+                    <p lang="zh">这里是南凌音喵，目前就读于shzu，软件工程专业，大一。</p>
+                    <p lang="zh">研究方向LLM的幻觉缓解，同时个人对人工智能有极大的兴趣。</p>                   <p lang="en">My research focuses on hallucination mitigation in LLMs, and I have a strong interest in AI.</p>
+                    <p lang="zh">同时是一个旮旯批兼末流码农，当然你找我打瓦打cs2我也很高兴。</p>
+                    <p lang="zh">前网名洛亦离999，混scratch吧的可能会知道我。</p>
+                    <p lang="zh">这个网站是我对html的尝试，我想把它做成一个资源分享和教程网站。</p>
+                    <p lang="zh">这也是我的第一个网站，请多多指教奥。</p>
+                    <p lang="zh">欢迎联系我哦！</p>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="void" id="void">
+        <div class="crop">
+            <ul id="card-list" style="--count: 8;">
+                <li>
+                    <div class="card"><a href="">
+                        <span class="model-name">2024.8</span>
+                        <span>大学生活--进入shzu，就读软件工程NIIT专业</span>
+                    </a></div>
+                </li>
+                <li>
+                    <div class="card"><a href="">
+                        <img src="../Pic/me/1/03.gif" alt="">
+                    </a></div>
+                </li>
+                <li>
+                    <div class="card"><a href="">
+                        <span class="model-name">2024.9</span>
+                        <span>接触科研--首次阅读论文并开始学习论文写作与阅读技巧</span>
+                    </a></div>
+                </li>
+                <li>
+                    <div class="card"><a href="">
+                        <img src="../Pic/me/1/03.gif" alt="">
+                    </a></div>
+                </li>
+                <li>
+                    <div class="card"><a href="">
+                        <span class="model-name">2024.10</span>
+                        <span>首个项目--PTmodel：零售经营数据分析与市场需求预测系统</span>
+                    </a></div>
+                </li>
+                <li>
+                    <div class="card"><a href="">
+                        <img src="../Pic/me/1/03.gif" alt="">
+                    </a></div>
+                </li>
+                <li>
+                    <div class="card"><a href="">
+                        <span class="model-name">2024.12--2025.2</span>
+                        <span>首次科研经历--完成个人首篇论文：“HIYO-Encoder”并于参加2025ETAI并作Pre</span>
+                    </a></div>
+                </li>
+                <li>
+                    <div class="card"><a href="">
+                        <img src="../Pic/me/1/03.gif" alt="">
+                    </a></div>
+                </li>
+            </ul>   
+            <div class="last-circle"></div>9
+            <div class="second-circle"></div>
+        </div>
+        <div class="mask"></div>
+        <div class="center-circle"></div>
+        <div>
+</body>
+
+</html>

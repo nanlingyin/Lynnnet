@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>资源分享</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url(../Pic/share/bg.jpg);
+      background-size: cover;
+    }
+    #main {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #click-section {
+      width: 35%;
+      height: 100%;
+      padding: 20px 0;
+      position: relative;
+    }
+    #drawerboxes {
+      margin-left: 10%;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+    #drawerboxes::before {
+      content: "";
+      width: 8px;
+      height: 94%;
+      position: absolute;
+      left: -10px;
+      top: 3%;
+      z-index: 120;
+    }
+    .drawerbox {
+      height: calc(100% / 5.5);
+      width: 70%;
+      position: relative;
+      z-index: 100;
+      transform: translateX(-70%);
+      transition: transform .5s ease-in-out;
+    }
+    .drawerbox.active {
+      transform: translateX(0);
+    }
+    .drawer-btn {
+      width: 100%;
+      height: 100%;
+      font: 800 30px '';
+      background-color: rgb(175, 190, 255);
+      border: none;
+      transition: background-color .5s ease-in-out;
+      color: #ffffff00;
+    }
+    .drawer-btn.active {
+      background-image: url(../Pic/share/bg.jpg);
+      background-size: cover;
+      color: rgb(70, 100, 180);
+    }
+    .drawer-btn:hover {
+      cursor: pointer;
+    }
+    .drawer-head {
+      position: absolute;
+      color: rgb(255, 255, 255);
+      font-size: 200px;
+      font-weight: 700;
+      right: -38px;
+      top: calc(50% - 135px);
+      text-shadow: 2px -1px 8px rgba(250, 80, 193, 0.323);
+    }
+    #slide-section {
+      position: relative;
+      height: 100%;
+      width: 65%;
+      display: flex;
+      justify-content: center;
+      padding: 0 40px;
+      background: linear-gradient(to right bottom,
+          rgba(255, 255, 255, .6),
+          rgba(255, 255, 255, .3),
+          rgba(255, 255, 255, .2));
+      backdrop-filter: blur(11px);
+    }
+    #slide-bar {
+      position: absolute;
+      top: 10%;
+      left: 40px;
+      height: 80%;
+      width: 1px;
+      background-color: rgb(223, 223, 223);
+    }
+    #bar {
+      position: absolute;
+      height: calc(100% / 4);
+      width: 5px;
+      top: 0;
+      left: -1.2px;
+      background-color: rgb(175, 190, 255);
+      transition: transform .5s ease-in-out;
+    }
+    #card-section {
+      height: 100%;
+      width: 80%;
+      overflow: auto; /* 修改为auto，允许内容滚动显示全 */
+    }
+    .card {
+      display: none;
+      flex-direction: column;
+      height: auto;         /* 高度自适应内容 */
+      min-height: 100%;
+      width: 100%;
+      padding: 10% 0;
+      color: white;
+      font-size: 30px;
+      transition: transform .5s ease-in-out;
+    }
+    .card.active {
+      display: flex;
+    }
+    .card-small-title {
+      font-size: 30px;
+      font-weight: 600;
+      padding-bottom: min(5%, 10px);
+      color: rgb(70, 100, 180);
+    }
+    .card-title {
+      font-size: 80px;
+      font-weight: 700;
+      padding-bottom: min(20%, 40px);
+      color: rgb(70, 100, 180);
+    }
+    .card-content {
+      font-size: 24px;
+      font-weight: 400;
+      color: rgb(94, 123, 255);
+      margin-bottom: 60px;
+    }
+    .card-img {
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+    }
+    .card-img img {
+      width: 100%;
+    }
+    .card-content a {
+      display: block;
+      margin: 16px 0;
+      padding: 12px 20px;
+      background: linear-gradient(90deg, #e0cfff 0%, #f3eaff 100%);
+      color: #5e7bff;
+      border-radius: 8px;
+      font-size: 20px;
+      font-weight: 500;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(124,95,212,0.08);
+      transition: background 0.3s, color 0.3s, transform 0.2s;
+    }
+    .card-content a:hover {
+      background: linear-gradient(90deg, #b39ddb 0%, #e0cfff 100%);
+      color: #fff;
+      transform: translateX(8px) scale(1.03);
+    }
+  </style>
+</head>
+<body>
+  <div id="main">
+    <div id="click-section">
+      <div id="drawerboxes">
+        <div class="drawerbox active">
+          <button class="drawer-btn active" onclick="slideTo(1)">开发工具<span class="drawer-head">1</span></button>
+        </div>
+        <div class="drawerbox">
+          <button class="drawer-btn" onclick="slideTo(2)">学习资源<span class="drawer-head">2</span></button>
+        </div>
+        <div class="drawerbox">
+          <button class="drawer-btn" onclick="slideTo(3)">设计资源<span class="drawer-head">3</span></button>
+        </div>
+        <div class="drawerbox">
+          <button class="drawer-btn" onclick="slideTo(4)">神奇网站<span class="drawer-head">4</span></button>
+        </div>
+      </div>
+    </div>
+    <div id="slide-section">
+      <div id="slide-bar">
+        <div id="bar"></div>
+      </div>
+      <div id="card-section">
+        <div id="card1" class="card active">
+          <div class="card-small-title">1</div>
+          <div class="card-title">开发工具</div>
+          <div class="card-content">
+            <a href="https://www.jetbrains.com/pycharm/download/"><i class="fas fa-code"></i> Pycharm</a>
+            <a href="https://code.visualstudio.com/"><i class="fas fa-laptop-code"></i> VSCode</a>
+            <a href="https://sourceforge.net/projects/dev-cpp/"><i class="fas fa-project-diagram"></i> DevC++</a>
+            <a href="https://www.cursor.com/"><i class="fas fa-mouse-pointer"></i> Cursor</a>
+            <a href="https://visualstudio.microsoft.com/zh-hans/vs/"><i class="fas fa-desktop"></i> VS</a>
+            <a href="https://notepad-plus-plus.org/"><i class="fas fa-edit"></i> Notepad++</a>
+            <a href="https://github.blog/news-insights/product-news/sunsetting-atom/"><i class="fas fa-atom"></i> Atom</a>
+          </div>
+          <div class="card-img">
+            <img src="../Pic/share/17.gif" alt="">
+          </div>
+        </div>
+        <div id="card2" class="card">
+          <div class="card-small-title">2</div>
+          <div class="card-title">学习资源</div>
+          <div class="card-content">
+            <a href="https://pan.baidu.com/s/1WDMVWYexVfSraylA9CflJw"><i class="fas fa-book"></i> <span lang="zh">听说你想学高数？密码：0721</span><span lang="en">Want to learn advanced math? Code: 0721</span></a>
+            <a href="https://pan.baidu.com/s/1NIpwszFnsyM8mzIX-OhB8g"><i class="fas fa-graduation-cap"></i> <span lang="zh">兄弟想考四六级卷死我吗？密码：0d00</span><span lang="en">CET-4/6 resources? Code: 0d00</span></a>
+            <a href="https://www.bilibili.com/video/BV1dr4y1n7vA/?spm_id_from=333.337.search-card.all.click"><i class="fas fa-video"></i> <span lang="zh">你说你想学C语言吗？这次没密码了</span><span lang="en">Want to learn C language? No code needed</span></a>
+            <a href="https://pan.baidu.com/s/14TqCDpzygHFIMtmc7YYQTw"><i class="fas fa-robot"></i> <span lang="zh">听说你要研究人工智能？密码：aiai</span><span lang="en">Interested in AI? Code: aiai</span></a>
+            <a href="https://pan.baidu.com/s/1u9Yn0-MI4ri1P9ruat_8NQ"><i class="fas fa-chart-line"></i> <span lang="zh">想要入坑算法竞赛吗（acwing）？密码：rpup</span><span lang="en">Algorithm contest resources (acwing)? Code: rpup</span></a>
+            <a href="https://pan.baidu.com/s/1o2zHiKSPpR9KuLxkshxB1Q"><i class="fas fa-trophy"></i> <span lang="zh">你要成为ACM高手？密码：rpup</span><span lang="en">ACM master resources? Code: rpup</span></a>
+          </div>
+          <div class="card-img">
+            <img src="../Pic/share/08.gif" alt="">
+          </div>
+        </div>
+        <div id="card3" class="card">
+          <div class="card-small-title">3</div>
+          <div class="card-title">设计素材</div>
+          <div class="card-content">
+            <a href="https://pan.baidu.com/s/1a4TKdpM7JvUyNVkuLnes0g"><i class="fas fa-paint-brush"></i> <span lang="zh">你要写简历没模板吗？密码：2077</span><span lang="en">Resume templates? Code: 2077</span></a>
+            <a href="https://pan.baidu.com/s/1AeyEsiAMtEyGUytgLeA2fg"><i class="fas fa-file-alt"></i> <span lang="zh">开题答辩，考研复试没模板密码：tsuk</span><span lang="en">Thesis/Exam templates? Code: tsuk</span></a>
+          </div>
+          <div class="card-img">
+            <img src="../Pic/share/03.gif" alt="">
+          </div>
+        </div>
+        <div id="card4" class="card">
+          <div class="card-small-title">一些功能不错的网站</div>
+          <div class="card-title">神奇网站</div>
+          <div class="card-content">
+            <a href="https://ccfddl.top/"><i class="fas fa-search"></i> <span lang="zh">会议期刊截稿时间查询网站</span><span lang="en">Conference deadline checker</span></a>
+            <a href="https://app.txyz.ai/"><i class="fas fa-robot"></i> <span lang="zh">tzyzAI论文解读</span><span lang="en">tzyzAI Paper Reader</span></a>
+            <a href="https://api.ephone.chat/register?aff=MBEQ"><i class="fas fa-comments"></i> <span lang="zh">GPT大语言模型免费调用，每天签到送余额（强推，比很多ai软件强）</span><span lang="en">Free GPT API, daily bonus (highly recommended)</span></a>
+            <a href="https://bohrium.dp.tech/apps/scholar?utm_source=bdsem&utm_medium=search&utm_campaign=bohrium&utm_term=googlexuesu&bd_vid=12143740261564220054"><i class="fas fa-graduation-cap"></i> <span lang="zh">国内可以访问的学术搜索助手</span><span lang="en">Academic search tool (China accessible)</span></a>
+            <a href="https://www.ilovepdf.com/zh-cn"><i class="fas fa-file-pdf"></i> <span lang="zh">超好用的pdf工具网站</span><span lang="en">Great PDF tools</span></a>
+            <a href="https://www.pptsupermarket.com/"><i class="fas fa-file-powerpoint"></i> <span lang="zh">ppt市场，一键生成ppt</span><span lang="en">PPT generator</span></a>
+            <a href="https://gamma.app/"><i class="fas fa-file-powerpoint"></i> <span lang="zh">gamma，一键生成ppt</span><span lang="en">Gamma, PPT generator</span></a>
+            <a href="https://www.canva.cn/"><i class="fas fa-paint-brush"></i> <span lang="zh">可画，上手非常简单的设计网站</span><span lang="en">Canva, easy design tool</span></a>
+            <a href="https://www.pexels.com/zh-cn/"><i class="fas fa-camera"></i> <span lang="zh">pexels，免费摄影素材合集</span><span lang="en">Pexels, free photos</span></a>
+            <a href="https://veleap.com/page/product_list?page=1&type=1"><i class="fas fa-images"></i> <span lang="zh">Leap免费设计素材合集</span><span lang="en">Leap, free design materials</span></a>
+            <a href="https://pingti.app/"><i class="fas fa-shopping-cart"></i> <span lang="zh">穷学生必备，找一个你想要的东西的低价替代用品</span><span lang="en">Find cheap alternatives for anything</span></a>
+          </div>
+          <div class="card-img">
+            <img src="../Pic/share/04.gif" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    let chosenSlideNumber = 1;
+    let barOffset = 0;
+    let intervalID;
+    startSlide();
+    const drawerBtns = Array.from(document.querySelectorAll(".drawer-btn"));
+    drawerBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        clearInterval(intervalID);
+        startSlide();
+      })
+    });
+    const slideSection = document.querySelector("#slide-section");
+    slideSection.addEventListener("mouseenter", () => {
+      clearInterval(intervalID);
+    });
+    slideSection.addEventListener("mouseleave", () => {
+      startSlide();
+    });
+    function slideTo(slideNumber) {
+      drawerboxToggle(slideNumber);
+      drawerbtnToggle(slideNumber);
+      chosenSlideNumber = slideNumber;
+      barOffset = (chosenSlideNumber - 1) * 100;
+      barSlide(barOffset);
+      const slides = document.querySelectorAll(".card");
+      slides.forEach((slide, idx) => {
+        if (idx === chosenSlideNumber - 1) {
+          slide.classList.add("active");
+        } else {
+          slide.classList.remove("active");
+        }
+      });
+    }
+    function drawerboxToggle(drawerboxNumber) {
+      let prevDrawerboxNumber = chosenSlideNumber;
+      const drawerboxes = document.querySelectorAll(".drawerbox");
+      drawerboxes[prevDrawerboxNumber - 1].classList.toggle("active");
+      drawerboxes[drawerboxNumber - 1].classList.toggle("active");
+    }
+    function drawerbtnToggle(drawerBtnNumber) {
+      let prevDrawerBtnNumber = chosenSlideNumber;
+      const drawerBtns = document.querySelectorAll(".drawer-btn");
+      drawerBtns[prevDrawerBtnNumber - 1].classList.toggle("active");
+      drawerBtns[drawerBtnNumber - 1].classList.toggle("active");
+    }
+    function barSlide(barOffset) {
+      const bar = document.querySelector("#bar");
+      bar.style.transform = `translateY(${barOffset}%)`;
+    }
+    function startSlide() {
+      intervalID = setInterval(() => {
+        slideTo(chosenSlideNumber % 4 + 1);
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

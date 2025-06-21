@@ -1,0 +1,52 @@
+{
+  "name": "oh-my-live2d",
+  "version": "0.19.3",
+  "description": "live2d component for web. 看板娘组件, 支持 model2、model3、model4",
+  "keywords": [
+    "Live2D",
+    "cubism2",
+    "cubism5",
+    "Live2D Component"
+  ],
+  "homepage": "https://github.com/oh-my-live2d/oh-my-live2d#readme",
+  "bugs": "https://github.com/oh-my-live2d/oh-my-live2d/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oh-my-live2d/oh-my-live2d.git",
+    "directory": "packages/oh-my-live2d"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "hacxy",
+    "email": "hacxy.js@outlook.com",
+    "url": "https://github.com/hacxy"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.min.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc && vite build",
+    "dev": "vite build --watch",
+    "demo": "vite serve demo",
+    "demo:umd": "vite"
+  },
+  "devDependencies": {
+    "compare-versions": "^6.1.0",
+    "csstype": "^3.1.3",
+    "pixi-live2d-display": "0.4.0",
+    "pixi.js": "6.5.10",
+    "vite": "5.2.11",
+    "vite-plugin-dts": "^3.9.1"
+  },
+  "gitHead": "2efcb8ab6e12a75be5bd5e42256d9464056a0bc6"
+}

@@ -1,0 +1,58 @@
+{
+  "zh": {
+    "nav": {
+      "about": "关于我",
+      "share": "资源分享", 
+      "donate": "捐赠",
+      "friends": "友链"
+    },
+    "cards": {
+      "eye": "我会一直视奸你",
+      "follow": "跟踪鼠标",
+      "galaxy": "星辰宇宙",
+      "bubble": "七彩泡泡",
+      "more": "更多功能",
+      "coming": "敬请期待",
+      "developing": "开发中...",
+      "online": "即将上线",
+      "new": "新功能"
+    },
+    "content": {
+      "welcome": "欢迎来到 Lynn 的个人空间",
+      "description": "这里汇集了丰富的学习资源、开发工具和创意项目。探索各种有趣的功能，发现更多可能性。感谢您的访问，希望这些内容对您有所帮助！",
+      "more": "更多",
+      "backToTop": "回到顶部"
+    },
+    "common": {
+      "language": "Language"
+    }
+  },
+  "en": {
+    "nav": {
+      "about": "About Me",
+      "share": "Resources",
+      "donate": "Donate", 
+      "friends": "Links"
+    },
+    "cards": {
+      "eye": "Eye Tracker",
+      "follow": "Mouse Follower",
+      "galaxy": "Galaxy Universe",
+      "bubble": "Colorful Bubbles",
+      "more": "More Features",
+      "coming": "Coming Soon",
+      "developing": "Developing...",
+      "online": "Coming Online",
+      "new": "New Feature"
+    },
+    "content": {
+      "welcome": "Welcome to Lynn's Personal Space",
+      "description": "Here you'll find rich learning resources, development tools, and creative projects. Explore various interesting features and discover new possibilities. Thank you for visiting, hope these contents are helpful to you!",
+      "more": "More",
+      "backToTop": "Back to Top"
+    },
+    "common": {
+      "language": "语言"
+    }
+  }
+}

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>捐赠 - Lynnnet</title>
+    <link rel="icon" type="image/jpeg" href="../Pic/me/2/29c07728ea852c1333ac1269369e883.jpg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Source+Han+Serif+SC:wght@500&display=swap');
+        body {
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Montserrat', 'Source Han Serif SC', 'Microsoft YaHei', serif;
+            background: linear-gradient(120deg, #b39ddb 0%, #e1bee7 100%);
+            color: #3d246c;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            width: 100%;
+            background: rgba(255,255,255,0.88);
+            box-shadow: 0 2px 16px #b39ddb44;
+            border-radius: 0 0 22px 22px;
+            padding: 22px 0 10px 0;
+            margin-bottom: 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .site-title {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            justify-content: center;
+        }
+        .logo {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 2.5px solid #b39ddb;
+            box-shadow: 0 2px 10px #b39ddb44;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        /* 3D卡片捐赠样式 */
+        .donate-shell {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 60vh;
+            perspective: 900px;
+            margin-top: 32px;
+        }
+        .donate-box {
+            width: auto;
+            max-width: 360px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 26px;
+            box-shadow: 0 8px 36px #b39ddb33, 0 1.5px 10px #d1c4e944;
+            position: relative;
+            overflow: hidden;
+            transition: 0.4s cubic-bezier(.4,0,.2,1);
+            transform-style: preserve-3d;
+            border: 2.5px solid #d1c4e9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            will-change: transform;
+            padding: 0;
+        }
+        .donate-shell:hover .donate-box {
+            transform: rotateY(18deg) scale(1.04);
+            box-shadow: 0 25px 44px rgba(120,60,180,0.13), 0 8px 36px #b39ddb33;
+        }
+        .donate-box:hover {
+            transform: rotateY(0deg) scale(1.12);
+            box-shadow: 0 36px 70px rgba(120,60,180,0.18), 0 8px 36px #b39ddb33;
+            z-index: 2;
+        }
+        .donate-image {
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            border-radius: 22px 22px 0 0;
+            background: #f3e5f5;
+            box-shadow: 0 2px 18px #b39ddb22;
+            display: block;
+            transition: opacity 0.3s;
+            padding: 0;
+        }
+        .donate-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+        .donate-box:hover .donate-image img {
+            transform: scale(1.08) rotate(-2deg);
+        }
+        .donate-content {
+            padding: 28px 20px 0 20px;
+            text-align: center;
+            flex: 1;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .donate-content h2 {
+            color: #7c43bd;
+            font-size: 1.8rem;
+            margin-bottom: 14px;
+            letter-spacing: 2px;
+            font-family: 'Montserrat', 'Source Han Serif SC', serif;
+            font-weight: 700;
+            transition: 0.3s;
+            transform: translateY(-40px);
+            opacity: 0;
+        }
+        .donate-tip {
+            color: #5e35b1;
+            font-size: 1.12rem;
+            margin-bottom: 20px;
+            margin-top: 0;
+            background: rgba(243,229,245,0.7);
+            border-radius: 10px;
+            padding: 10px 8px;
+            font-family: 'Source Han Serif SC', serif;
+            transition: 0.3s;
+            transform: translateY(60px);
+            opacity: 0;
+        }
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 32px;
+            background: linear-gradient(90deg, #b39ddb 0%, #7c43bd 100%);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-family: 'Montserrat', 'Source Han Serif SC', serif;
+            cursor: pointer;
+            box-shadow: 0 2px 10px #b39ddb33;
+            transition: background 0.2s;
+            opacity: 0;
+            transform: translateY(80px);
+        }
+        /* 悬停时切换显示 */
+        .donate-box:hover .donate-image {
+            display: none;
+        }
+        .donate-box:hover .donate-content {
+            display: flex;
+        }
+        .donate-box:hover .donate-content h2 {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .donate-box:hover .donate-tip {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .donate-box:hover .back-button {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        footer {
+            background: rgba(255,255,255,0.90);
+            border-radius: 22px 22px 0 0;
+            box-shadow: 0 -2px 14px #b39ddb22;
+            text-align: center;
+            padding: 20px 0 12px 0;
+            margin-top: 36px;
+            font-size: 16px;
+            width: 100%;
+            font-family: 'Montserrat', 'Source Han Serif SC', serif;
+        }
+        footer a {
+            color: #7c43bd;
+            text-decoration: underline;
+        }
+        /* 贡献者模态窗口 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0; top: 0; width: 100vw; height: 100vh;
+            background: rgba(120,60,180,0.13);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #fff;
+            border-radius: 18px;
+            padding: 36px 28px 28px 28px;
+            max-width: 540px;
+            width: 92vw;
+            box-shadow: 0 8px 36px #b39ddb22;
+            position: relative;
+            text-align: center;
+            font-family: 'Montserrat', 'Source Han Serif SC', serif;
+        }
+        .modal-content h2 {
+            color: #b39ddb;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', 'Source Han Serif SC', serif;
+        }
+        .contributors-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .contributors-images img {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            border: 2px solid #e1bee7;
+            object-fit: cover;
+            transition: box-shadow 0.2s, border 0.2s;
+        }
+        .contributors-images img.highlighted-contributor {
+            border: 2.5px solid #b39ddb;
+            box-shadow: 0 0 14px #b39ddb88;
+        }
+        .modal-content .close {
+            position: absolute;
+            top: 12px; right: 18px;
+            font-size: 30px;
+            color: #b39ddb;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .modal-content .close:hover {
+            color: #7c43bd;
+        }
+        /* 悬浮按钮 */
+        #floating-button {
+            position: fixed;
+            right: 32px;
+            bottom: 32px;
+            z-index: 1000;
+        }
+        #float-button-circle {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #b39ddb 0%, #7c43bd 100%);
+            color: #fff;
+            font-size: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px #b39ddb55;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+        #float-button-circle:hover {
+            background: linear-gradient(135deg, #7c43bd 0%, #b39ddb 100%);
+            box-shadow: 0 8px 24px #7c43bd55;
+        }
+        @media (max-width: 600px) {
+            .donate-box {
+                width: 96vw;
+                max-width: 98vw;
+                padding-bottom: 0;
+            }
+            .donate-image {
+                height: auto;
+                min-height: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="site-title">
+            <img src="../Pic/me/2/29c07728ea852c1333ac1269369e883.jpg" alt="Logo" class="logo">
+            <h1>捐赠</h1>
+        </div>
+    </header>
+
+    <!-- 主内容 -->
+    <main>
+        <div class="donate-shell">
+            <div class="donate-box">
+                <div class="donate-image">
+                    <img src="../Pic/images/pay.jpg" alt="收款码">
+                </div>
+                <div class="donate-content">
+                    <h2>捐赠</h2>
+                    <p class="donate-tip">Ciallo～(∠・ω< )⌒★<br>感谢捐赠，请在备注留下您的联系方式，稍后将有福利回馈哦！</p>
+                    <button class="back-button" onclick="window.history.back()">返回上一页</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>&copy; 2024 Lynnnet</p>
+        <p>本站完全开源： <a href="https://github.com/nanlingyin/Lynnnet">https://github.com/nanlingyin/Lynnnet</a></p>
+        <p><a href="#" id="contributors-link">点此查看贡献者</a></p>
+    </footer>
+
+    <!-- 贡献者模态窗口 -->
+    <div id="contributors-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>贡献者</h2>
+            <div class="contributors-images">
+                <img src="../Pic/contributors/1.jpg" alt="贡献者1" class="highlighted-contributor">
+                <img src="../Pic/contributors/2.jpg" alt="贡献者2">
+                <img src="../Pic/contributors/3.jpg" alt="贡献者3" class="highlighted-contributor">
+                <img src="../Pic/contributors/4.jpg" alt="贡献者4" class="highlighted-contributor">
+                <img src="../Pic/contributors/5.jpg" alt="贡献者5">
+                <img src="../Pic/contributors/6.jpg" alt="贡献者6">
+                <img src="../Pic/contributors/7.jpg" alt="贡献者7">
+                <img src="../Pic/contributors/8.jpg" alt="贡献者8" class="highlighted-contributor">
+                <img src="../Pic/contributors/9.jpg" alt="贡献者9" class="highlighted-contributor">
+                <img src="../Pic/contributors/10.jpg" alt="贡献者10" class="highlighted-contributor">
+                <img src="../Pic/contributors/11.jpg" alt="贡献者11">
+            </div>
+            <p>感谢上述捐赠者/贡献者为lynnnet提供的帮助</p>
+            <p>金色高光的Contributor在我的网站开发过程中作出了突出贡献</p>
+        </div>
+    </div>
+
+    <script>
+        // 贡献者弹窗逻辑
+        const modal = document.getElementById('contributors-modal');
+        const link = document.getElementById('contributors-link');
+        const closeBtn = document.querySelector('.modal-content .close');
+        link.onclick = function(e) {
+            e.preventDefault();
+            modal.style.display = 'flex';
+        };
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+        };
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
+    </script>
+</body>
+</html>
