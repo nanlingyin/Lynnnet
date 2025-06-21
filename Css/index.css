@@ -43,116 +43,104 @@
   margin: 15px auto;
   top: 0px;
   max-width: 1180px;
-  height: 60px;
+  height: 70px;
   /* background-image: linear-gradient(to top,rgb(157, 148, 167),rgb(60,16,110)); */
-  background: #778ca3;
+  background: rgba(119, 140, 163, 0.2);
   display: flex;
   justify-content: space-between;
+  align-items: center;
   z-index: 9999;
+  border-radius: 35px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0 20px;
 }
-.topal {
-  width: 30%;
-  height: 60px;
+.topal, .topar {
+  width: 35%;
+  height: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
+  gap: 15px;
 }
-.topal .tal1 {
-  font-size: 22px;
-  line-height: 60px;
-  padding-left: 10px;
+.topal .tal1, .topar .tar1 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  padding: 12px 20px;
   color: #ffffff;
+  border-radius: 25px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  flex: 1;
+  backdrop-filter: blur(25px) saturate(150%);
+  -webkit-backdrop-filter: blur(25px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  /* 确保四个导航项大小完全一致 */
+  width: calc(50% - 7.5px);
+  max-width: none;
 }
-.topal .tal1:hover {
+.topal .tal1:hover, .topar .tar1:hover {
   color: #2f3542;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 .topaa {
-  width: 35%;
-  height: 60px;
-  transition: 1s;
+  width: 30%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+  position: relative;
+  border-radius: 35px;
+  overflow: visible;
+}
+.topaa:hover{
+    z-index: 100;
 }
 .topaa::before {
   content: "";
   display: block;
   position: absolute;
-  top: 60px;
-  left: 0;
-  right: 0;
-  margin: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 300px;
-  height: 0px;
-  /* background: rgba(0, 0, 0, 0.527); */
-  z-index: 998;
-  transition: 0.4s .5s;
+  height: 0;
   background-image: url(../Pic/index/2.jpg);
-  background-size: contain;
-  box-shadow: -1px 10px 10px rgba(0, 0, 0, 0.4);
-
+  background-size: cover;
+  background-position: center;
+  transition: all 0.5s ease;
+  opacity: 0;
+  z-index: -1;
+  border-radius: 15px;
 }
 .topaa:hover::before {
   height: 300px;
-}
-
-.topaa::after {
-  font-weight: 900;
-  content: "Lynn";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  background-image: linear-gradient(
-    to right,
-    rgb(201, 22, 156),
-    rgb(177, 2, 177),
-    rgb(36, 127, 230),
-    rgb(47, 49, 146),
-    rgb(62, 45, 138),
-    rgb(165, 50, 194),
-    rgb(145, 21, 247),
-    rgb(221, 19, 160)
-  );
-  clip-path: circle(6% at 50% 55%);
-  animation: move 6s infinite ease-in-out;
-}
-@keyframes move {
-  0% {
-    clip-path: circle(6% at 36% 55%);
-  }
-  50% {
-    clip-path: circle(6% at 65% 55%);
-  }
-  100% {
-    clip-path: circle(6% at 36% 55%);
-  }
+  opacity: 1;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 .topaa h2 {
-  color: #381d1d;
-  transition: 0.5s;
-  font-weight: 900;
+  color: #fff;
+  z-index: 1;
+  transition: all 0.3s ease;
 }
-.topaa {
-  font-size: 65px;
-  text-align: center;
-  line-height: 60px;
+.topaa:hover h2 {
+  color: transparent;
 }
-.topar {
-  width: 30%;
-  height: 60px;
-  display: flex;
-  justify-content: space-between;
-}
-.topar .tar1 {
-  font-size: 22px;
-  line-height: 60px;
-  padding-right: 10px;
-  color: #ffffff;
-}
-.topar .tar1:hover {
-  color: #2f3542;
-}
+
 
 @media (min-width: 505px) {
   .topt {
@@ -193,6 +181,42 @@
     background-image: url(../Img/1.png);
   }
 }
+
+/* 全局磨砂玻璃遮罩层 */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(50px) saturate(180%) brightness(1.1);
+    -webkit-backdrop-filter: blur(50px) saturate(180%) brightness(1.1);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* 为body添加额外的模糊层叠效果 */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, 
+        rgba(255, 255, 255, 0.1) 0%, 
+        rgba(135, 155, 185, 0.08) 50%, 
+        rgba(100, 120, 150, 0.12) 100%);
+    backdrop-filter: blur(25px) saturate(150%);
+    -webkit-backdrop-filter: blur(25px) saturate(150%);
+    z-index: -1;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+}
+
+/* 增强顶部图片区域的磨砂效果 */
 .topt {
   max-width: 1180px;
   height: 140px;
@@ -201,243 +225,583 @@
   background-image: url(../Pic/index/1.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 10% 30%;
-  opacity: 0.6;
+  background-position: center;
+  opacity: 0.9;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 15px 15px;
+  backdrop-filter: blur(30px) saturate(150%);
+  -webkit-backdrop-filter: blur(30px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 .topb {
   max-width: 1180px;
-  margin: 15px auto;
-  height: 1060px;
-  /* background-color: #5e7085; */
+  margin: 25px auto;
+  height: auto;
   display: flex;
   justify-content: space-between;
+  gap: 20px;
+  padding: 0 15px;
+  flex-wrap: wrap;
 }
+
+/* 统一左侧按钮区域样式 */
 .topbl {
-  width: 20%;
-  height: 390px;
-  background-color: rgb(67, 78, 102);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+    width: 20%;
+    min-width: 200px;
+    height: 450px;
+    background: rgba(67, 78, 102, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    padding: 10px 0;
+    backdrop-filter: blur(60px) saturate(180%);
+    -webkit-backdrop-filter: blur(60px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
 }
+
 .topbl > div {
-  width: 100%;
-  height: 39px;
-  transition: 0.4s;
-  /* background-color: #fff; */
+    width: 100%;
+    height: 45px;
+    margin: 5px 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 .topbl > div a {
-  /* transition: 1s; */
-  display: block;
-  font-size: 25px;
-  font-weight: 900;
-  line-height: 39px;
-  text-align: center;
-  color: #c7c3c3;
-  font: 25px;
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    color: #e8e8e8;
+    padding: 10px 15px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: 10px;
+    transition: all 0.3s ease;
 }
+
 .topbl > div:hover {
-  background-color: #c7c3c3;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(35px) saturate(200%);
+    -webkit-backdrop-filter: blur(35px) saturate(200%);
+    transform: translateX(8px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.6);
 }
+
 .topbl > div a:hover {
-  color: #050505;
+    color: #2f3542;
+    text-shadow: none;
 }
 
+/* 中间装饰图片区域 - 放置2.png */
+.topmid {
+    width: 18%;
+    min-width: 150px;
+    height: 450px;
+    background: rgba(164, 176, 190, 0.2);
+    background-image: url(../Pic/index/3/2.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    backdrop-filter: blur(50px) saturate(180%);
+    -webkit-backdrop-filter: blur(50px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    position: relative;
+}
+
+/* 主图片展示区域 - 显示1.jpg */
 .topba {
-  width: 53%;
-  height: 390px;
-  background-color: rgb(117, 130, 172);
-  background-image: url(../Pic/index/3/1.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.topbr {
-  position: sticky;
-  top: 80px;
-  width: 20%;
-  height: 530px;
-  background-color: #a4b0be;
-  z-index: 999;
-  background-image: url(../Pic/index/3/2.png);
-  background-size: cover;
-}
-.auto {
-  position: absolute;
-  top: 760px;
-  /* width: 100%; */
-  height: 530px;
-  /* background-color: rgba(255, 255, 255, 0.342); */
-  /* z-index: 899; */
-}
-.auto1 {
-  width: 76.5%;
-  height: 530px;
-  background-color: #a4b0be;
-}
-.autot {
-  width: 100%;
-  height: 60px;
-  background-color: #2f3542;
-}
-.autot1 {
-  float: right;
-  font-size: 30px;
-  color: #cecece;
-  margin: 14px;
-}
-.autot1 i {
-  font-size: 25px;
-}
-.autob {
-  width: 100%;
-  height: 470px;
-  /* background-color: rgba(104, 18, 18, 0.473); */
-}
-/* 。。。。。。。。 */
-.bz {
-  width: 100%;
-  height: 470px;
-  overflow: hidden;
-  display: flex;
-  flex: auto;
-}
-.bz li {
-  position: relative;
-  float: left;
-  width: 20%;
-  height: 320px;
-  background-size: cover;
-  transition: 0.4s;
-}
-.bz:hover li {
-  width: 16%;
-}
-.bz li:hover {
-  width: 300px;
-}
-
-@media (max-width: 450px) {
-  .auto {
-    top: 740px;
-  }
-}
-@media (min-width: 1180px) {
-  .topba {
-    order: 1;
+    width: 37%;
+    height: 450px;
+    background: rgba(117, 137, 167, 0.2);
     background-image: url(../Pic/index/3/1.jpg);
     background-size: cover;
-  }
-  .topbl {
-    order: 2;
-  }
-  .topbr {
-    order: 3;
-  }
-  .auto1 {
-    width: 902px;
-  }
-  @keyframes move {
-    0% {
-      clip-path: circle(4% at 39% 55%);
-    }
-    50% {
-      clip-path: circle(4% at 65% 65%);
-    }
-    100% {
-      clip-path: circle(4% at 39% 55%);
-    }
-  }
+    background-repeat: no-repeat;
+    background-position: center top;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    position: relative;
+    backdrop-filter: blur(45px) saturate(170%);
+    -webkit-backdrop-filter: blur(45px) saturate(170%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
 }
-@media (max-width: 590px) {
-  .topbl > div a {
-    font-size: 16px;
-  }
+
+.topba::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(47, 53, 66, 0.1), transparent);
+    z-index: 1;
 }
-@media (max-width: 590px) {
-  .bz:hover li {
-    width: 15%;
-  }
-  .bz li:hover {
-    width: 170px;
-  }
-}
-@media (max-width: 1180px) {
-  .auto {
+
+/* 图片展示区域完全重新设计 */
+.auto {
+    position: relative;
     width: 100%;
-  }
+    margin-top: 30px;
 }
 
-.fj {
-  width: 76.5%;
-  height: 100px;
-  background: #a4b0be;
-  position: absolute;
-  top: 640px;
-  display: flex;
-  background-image: url(../Pic/index/3/3.jpg);
-  background-size: contain;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-position: 250px center;
+.auto1 {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 15px;
+    background: transparent;
 }
 
-@media (max-width: 800px) {
-  .fj {
-    background-image: url(../Img/111.jpeg);
-    background-size: contain;
-    background-color: rgb(56, 110, 177);
-    background-position: 250px center;
-  }
-}
-@media (max-width: 565px) {
-  .fj {
-    flex-direction: column;
-  }
-}
-@media (min-width: 1180px) {
-  .fj {
-    width: 902px;
-  }
+.autot {
+    width: 100%;
+    height: 60px;
+    background: rgba(47, 53, 66, 0.2);
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 25px;
+    backdrop-filter: blur(55px) saturate(180%);
+    -webkit-backdrop-filter: blur(55px) saturate(180%);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: none;
 }
 
-@media (max-width: 450px) {
-  .fj {
-    top: 620px;
-  }
-}
-
-/* 语言切换按钮样式 */
-.language-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: rgba(255, 255, 255, 0.9);
-    border: 2px solid #62739c;
-    border-radius: 25px;
-    padding: 8px 16px;
-    font-size: 14px;
-    font-weight: bold;
-    color: #62739c;
-    cursor: pointer;
-    z-index: 1000;
+.autot1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 12px rgba(98, 115, 156, 0.2);
+    text-decoration: none;
 }
 
-.language-toggle:hover {
-    background: #62739c;
-    color: white;
+.autot1:hover {
+    color: #ffd700;
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(98, 115, 156, 0.3);
+}
+
+.autot1 i {
+    font-size: 20px;
+}
+
+/* 完全重新设计的图片展示容器 */
+.autob {
+    width: 100%;
+    height: 470px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(30px) saturate(150%);
+    -webkit-backdrop-filter: blur(30px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: none;
+}
+
+/* 优化图片列表，消除上下遮挡 */
+.bz {
+    width: 100%;
+    height: 470px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    background: transparent;
+    overflow: hidden;
+}
+
+.bz li {
+    position: relative;
+    width: 20%;
+    height: 470px;
+    margin: 0;
+    padding: 0;
+    transition: width 0.4s ease;
+    overflow: hidden;
+    border: none;
+    background: transparent;
+}
+
+.bz li img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+}
+
+/* 悬停效果 */
+.bz:hover li {
+    width: 16%;
+}
+
+.bz li:hover {
+    width: 300px;
+}
+
+/* 移动端优化 */
+@media (max-width: 1180px) {
+    .topa {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 15px;
+        border-radius: 25px;
+    }
+    .topal, .topar {
+        flex-basis: 100%;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    .topaa {
+        order: -1;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    .topar {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 1024px) {
+    .topb {
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 20px;
+    }
+    
+    .topbl, .topmid, .topba {
+        width: 100%;
+        height: 300px;
+    }
+    
+    .bz {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .bz li {
+        width: 100% !important;
+        height: 200px;
+    }
+    
+    .bz:hover li {
+        width: 100% !important;
+    }
+    
+    .bz li:hover {
+        width: 100% !important;
+        transform: scale(1.02);
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        height: auto;
+    }
+    .topa {
+        padding: 10px;
+    }
+    .topal .tal1, .topar .tar1 {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+    .topbl, .topmid, .topba {
+        height: 250px;
+    }
+    .autob {
+        height: auto;
+        min-height: 400px;
+    }
+    
+    .bz li {
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .topal, .topar {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .topal .tal1, .topar .tar1 {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .topbl, .topmid, .topba {
+        height: 200px;
+    }
+    .autob {
+        height: auto;
+        min-height: 350px;
+    }
+    
+    .bz li {
+        height: 150px;
+    }
+}
+
+/* Live2D聊天功能样式 */
+.chat-container {
+    position: fixed;
+    left: 20px;
+    bottom: 280px;
+    width: 300px;
+    max-height: 400px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1000;
+    animation: chatSlideIn 0.3s ease;
+}
+
+.chat-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.chat-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.chat-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    max-height: 280px;
+    min-height: 200px;
+}
+
+.message {
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message.user {
+    align-items: flex-end;
+}
+
+.message.assistant {
+    align-items: flex-start;
+}
+
+.message-content {
+    max-width: 80%;
+    padding: 8px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.message.user .message-content {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.message.assistant .message-content {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.message-time {
+    font-size: 10px;
+    color: #888;
+    margin-top: 4px;
+}
+
+.chat-input-container {
+    padding: 12px 15px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 8px;
+}
+
+.chat-input {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 8px 12px;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.chat-input:focus {
+    border-color: #667eea;
+}
+
+.chat-send {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.chat-send:hover {
+    transform: translateY(-1px);
+}
+
+.chat-send:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.chat-toggle {
+    position: fixed;
+    left: 320px;
+    bottom: 200px;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    transition: all 0.3s ease;
+    font-size: 18px;
+}
+
+.chat-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: #f0f0f0;
+    border-radius: 12px;
+    max-width: 80px;
+}
+
+.typing-dots {
+    display: flex;
+    gap: 2px;
+}
+
+.typing-dot {
+    width: 4px;
+    height: 4px;
+    background: #888;
+    border-radius: 50%;
+    animation: typingAnimation 1.4s infinite;
+}
+
+.typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes chatSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes typingAnimation {
+    0%, 60%, 100% {
+        opacity: 0.3;
+    }
+    30% {
+        opacity: 1;
+    }
 }
 
 /* 移动端适配 */
 @media (max-width: 768px) {
-    .language-toggle {
-        top: 15px;
-        right: 15px;
-        padding: 6px 12px;
-        font-size: 12px;
+    .chat-container {
+        left: 10px;
+        bottom: 200px;
+        width: 250px;
+        max-height: 300px;
+    }
+    
+    .chat-toggle {
+        left: 270px;
+        bottom: 150px;
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+    
+    .chat-messages {
+        max-height: 200px;
+        min-height: 150px;
     }
 }
