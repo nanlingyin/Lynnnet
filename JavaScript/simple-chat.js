@@ -216,7 +216,7 @@ class SimpleChatBot {
 
             // 解析不同API的响应格式
             let reply = '';
-            if (API_CONFIG.apiType === 'openai' && data.choices && data.choices[0]) {
+            if (API_CONFIG.apiType === 'siliconflow' && data.choices && data.choices[0]) {
                 reply = data.choices[0].message.content;
             } else if (API_CONFIG.apiType === 'claude' && data.content && data.content[0]) {
                 reply = data.content[0].text;
