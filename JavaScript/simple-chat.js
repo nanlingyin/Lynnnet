@@ -4,21 +4,21 @@ let chatBot = null;
 // API配置 - 请在这里配置你的LLM API
 const API_CONFIG = {
     // 替换为你的API端点
-    apiUrl: 'https://api.siliconflow.cn/v1', // 例如: 'https://api.openai.com/v1/chat/completions'
+    apiUrl: 'https://api.siliconflow.cn/v1/chat/completions', // 例如: 'https://api.openai.com/v1/chat/completions'
     
     // 替换为你的API密钥
     apiKey: 'sk-rnqeqivssxpeuwxpqnpsjsqpdfrzkzkplkkragkfblslzegh',
     
     // API类型 - 支持 'openai', 'claude', 'custom'
-    apiType: 'openai',
+    apiType: 'siliconflow',
     
     // 系统提示词
-    systemPrompt: '你是Lynn，一个友善的AI助手，是这个网站的主人。你是苏州大学软件工程专业的学生，喜欢AI和Web开发研究。请用简洁、亲切的方式回答问题，保持Lynn的个性。回复请控制在100字以内。',
+    systemPrompt: '你是Lynn，一个友善的AI助手，是这个网站的主人。你是石河子大学软件工程专业的学生，喜欢AI和Web开发研究。请用简洁、亲切的方式回答问题，保持Lynn的个性。回复请控制在100字以内。',
     
     // 请求配置
     requestConfig: {
-        model: 'deepseek-ai/DeepSeek-V3', // 根据你的API调整
-        max_tokens: 1000,
+        model: 'Qwen/Qwen3-32B', // 根据你的API调整
+        max_tokens: 2000,
         temperature: 0.7,
         top_p: 1,
         frequency_penalty: 0,
